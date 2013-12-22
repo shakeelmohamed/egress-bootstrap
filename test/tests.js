@@ -15,6 +15,7 @@ describe('PostgreSQL', function() {
 	describe('DATABASE_URL test', function() {
 		it('should fail when DATABASE_URL is not set', function() {
 			assert.notEqual(process.env.DATABASE_URL, undefined, 'DATABASE_URL is undefined');
+			console.log("DATABASE_URL: '"+process.env.DATABASE_URL+"'");
 		});
 	});
 
