@@ -1,0 +1,35 @@
+script.
+    var user = '!{user}';
+
+// Follow the format of {'url': 'visiblename' }
+- var navItems = {'': 'Home'}
+.navbar.navbar-inverse.navbar-fixed-top
+  .container
+    .navbar-header
+      button(type="button", class="navbar-toggle", data-toggle="collapse", data-target=".navbar-collapse")
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a(class="navbar-brand" href="./") #{siteName}
+    .collapse.navbar-collapse
+        ul.nav.navbar-nav
+            - for navItem, path in navItems
+                if path === loc
+                    li.active
+                        a(href= '/' + path)= navItem
+                else
+                    li
+                        a(href= '/' + path)= navItem
+            
+            li
+                - if(user)
+                    a(href="/logout" style="color:whitesmoke") Logout
+                - else
+                    a(href="/join" style="color:whitesmoke") Join
+        ul.nav.navbar-nav.navbar-right
+            li
+                - if(user)
+                    a(style="color:whitesmoke;") Hello, #{user}
+                - else
+                    a(href="/login" style="color:whitesmoke") Login
+            
