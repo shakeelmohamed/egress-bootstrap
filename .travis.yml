@@ -3,12 +3,9 @@ node_js:
     - "0.10.x"
 notifications:
     email: false
+services: PostgreSQL
 env:
     DATABASE_URL: postgres://postgres:@127.0.0.1/nopejs_test
-postgres:
-    adapter: postgresql
-    database: nopejs_test
-    username: postgres
 before_script:
     - psql -c 'create database nopejs_test;' -U postgres
     - psql -d nopejs_test -f databases/user.sql  -U postgres

@@ -22,6 +22,7 @@ describe('PostgreSQL', function() {
 		it('should fail when unable to create the user table', function() {
 			var entered = false;
 			pg.connect(process.env.DATABASE_URL, function (err, client) {
+				console.log("CONNECTED");
 				entered = true;
 				assert.ifError(err);
 				assert.equal(true, fs.existsSync('databases/users.sql'));
