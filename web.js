@@ -7,17 +7,22 @@ var express = require('express'),
 app.configure(function () {
     app.set('views', __dirname + '/jade');
     app.set('view engine', 'jade');
+    app.locals.pretty = true;
     app.use(express.bodyParser());
     app.use(express.cookieParser());
 	app.use(express.session({ secret: 'Nope.js'}));
     app.use(express.static(__dirname + '/public'));
     app.use(app.router);
     app.use(function(req, res, next){
-		res.render('404')
+		res.redirect('/404');
 	});
 });
 
-routes.init(app);
+var config = {
+    sitename: 'Nope.JS',
+    author: 'Shakeel Mohamed'
+};
+routes.init(app, config);
 
 var port = process.env.PORT || 5000;
 

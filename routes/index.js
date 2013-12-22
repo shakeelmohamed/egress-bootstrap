@@ -1,20 +1,25 @@
-exports.init = function (app) {
+exports.init = function (app, config) {
     var pg = require('pg'),
     jade = require('jade'),
     bcrypt = require('bcrypt-nodejs');
 
     function getViewData (title, pathSuffix, userID, message) {
-        // Set the siteName value
+        // Set the config values in web.js
         return {
-            siteName: "Nope.JS",
+            sitename: config.sitename,
+            author: config.author,
             title: title,
             loc: pathSuffix,
             user: userID
-        }
+        };
     }
 
     app.get('/', function (req, res) {
         res.render('index', getViewData('Home', 'home', req.session.user_id));
+    });
+
+    app.get('/404', function (req, res) {
+        res.render('404', getViewData('404', '', req.session.user_id));
     });
 
     app.get('/login', function (req, res) {

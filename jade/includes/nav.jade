@@ -1,5 +1,6 @@
 script.
-    var user = '!{user}';
+    //TODO: there has to be a better way to do this. it makes the template var a JS var
+    var user = '#{user}';
 
 // Follow the format of {'url': 'visiblename' }
 - var navItems = {'': 'Home'}
@@ -10,7 +11,7 @@ script.
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a(class="navbar-brand" href="./") #{siteName}
+      a(class="navbar-brand" href="./") #{sitename}
     .collapse.navbar-collapse
         ul.nav.navbar-nav
             - for navItem, path in navItems
@@ -23,13 +24,12 @@ script.
             
             li
                 - if(user)
-                    a(href="/logout" style="color:whitesmoke") Logout
+                    a(href="/logout") Logout
                 - else
-                    a(href="/join" style="color:whitesmoke") Join
+                    a(href="/join") Join
         ul.nav.navbar-nav.navbar-right
             li
                 - if(user)
-                    a(style="color:whitesmoke;") Hello, #{user}
+                    a Hello, #{user}
                 - else
-                    a(href="/login" style="color:whitesmoke") Login
-            
+                    a(href="/login") Login
