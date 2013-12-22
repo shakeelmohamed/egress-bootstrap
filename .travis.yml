@@ -3,6 +3,8 @@ node_js:
     - "0.10.x"
 notifications:
     email: false
+env:
+    DATABASE_URL: postgres://postgres:@127.0.0.1/nopejs_test
 postgres:
     adapter: postgresql
     database: nopejs_test

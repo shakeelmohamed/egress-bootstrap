@@ -12,6 +12,6 @@ NOPE is an acronym for Node.js Organized PostgreSQL Experience, a minimal user a
 2. In your `.env` file add your PostgreSQL connection string in the following format
 `DATABASE_URL=postgres://<username>:<password>@<host>/<dbname>`, this will allow your application to connect to your database.
 
-# license
+# License
 
 MIT
