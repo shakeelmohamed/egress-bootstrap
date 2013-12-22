@@ -23,19 +23,24 @@ describe('PostgreSQL', function() {
 	describe('create user table', function() {
 		it('should fail when unable to create the user table', function() {
 			var entered = false;
-			console.log("Did we enter the connect block? : ", entered);
+			//console.log("Did we enter the connect block? : ", entered);
 			pg.connect(process.env.DATABASE_URL, function (err, client) {
-				console.log("CONNECTED");
+				console.log("We connected just fine.");
 				entered = true;
 				console.log("We're in the connect block, right? : ", entered);
+
 				assert.ifError(err);
+
 				assert.equal(true, fs.existsSync('databases/users.sql'), 'users.sql exists');
+
 				client.query(fs.readFileSync('databases/user.sql'), function (err, result) {
 					assert.ifError(err);
 					console.log("We ran the query, I guess.");
 				});
+				
+				client.end();
 			});
-			console.log("How about now? : ", entered);
+			//console.log("How about now? : ", entered);
 			//assert.equal(true, entered, 'PostgreSQL connection failed.');
 		})
 	})
