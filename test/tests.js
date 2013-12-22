@@ -15,6 +15,7 @@ describe('PostgreSQL', function() {
 	describe('DATABASE_URL test', function() {
 		it('should fail when DATABASE_URL is not set', function() {
 			assert.notEqual(process.env.DATABASE_URL, undefined, 'DATABASE_URL is undefined');
+			assert.equal(process.env.DATABASE_URL, 'postgres://postgres:@127.0.0.1/nopejs_test');
 			console.log("DATABASE_URL: '"+process.env.DATABASE_URL+"'");
 		});
 	});
@@ -26,7 +27,7 @@ describe('PostgreSQL', function() {
 				console.log("CONNECTED");
 				entered = true;
 				assert.ifError(err);
-				assert.equal(true, fs.existsSync('databases/users.sql'));
+				assert.equal(true, fs.existsSync('databases/users.sql'), 'users.sql exists');
 				client.query(fs.readFileSync('databases/user.sql'), function (err, result) {
 					assert.ifError(err);
 				});
