@@ -5,7 +5,7 @@ notifications:
     email: false
 services: PostgreSQL
 env:
-    DATABASE_URL: postgres://postgres:@127.0.0.1/nopejs_test
+    DATABASE_URL: postgres://postgres@127.0.0.1/nopejs_test
 before_script:
     - psql -c 'create database nopejs_test;' -U postgres
     #- psql -d nopejs_test -f databases/user.sql  -U postgres
