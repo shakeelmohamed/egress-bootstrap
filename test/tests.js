@@ -19,7 +19,7 @@ describe('PostgreSQL', function() {
             assert.equal(process.env.DATABASE_URL, 'postgres://postgres:@127.0.0.1/nopejs_test');
             done();
         });
-    }),
+    //}),
 
     //describe('create user table', function() {
         /*
@@ -49,5 +49,5 @@ describe('PostgreSQL', function() {
             console.log("Nothing before this will work.");
             done();
         });
-    //})
+    })
 });
