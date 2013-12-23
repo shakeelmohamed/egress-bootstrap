@@ -63,7 +63,7 @@ describe('PostgreSQL', function() {
             //assert.equal(true, entered, 'PostgreSQL connection failed.');
             done();
             */
-            pg.connect(process.env.DATABASE_URL, function(err, nopejs_client, done) {
+            pg.connect('postgres://postgres:@127.0.0.1/nopejs_test', function(err, nopejs_client, done) {
               if(err) {
                 return console.error('error fetching client from pool', err);
               }

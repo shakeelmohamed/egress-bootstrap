@@ -2,3 +2,4 @@ test:
     adapter: postgresql
     database: nopejs_test
     username: postgres
+    password: 
