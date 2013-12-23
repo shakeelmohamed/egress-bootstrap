@@ -14,7 +14,7 @@ describe('Array', function(){
 describe('PostgreSQL', function() {
     describe('DATABASE_URL test', function() {
         it('should fail when DATABASE_URL is not set', function() {
-            console.log("DATABASE_URL: ["+process.env.DATABASE_URL+"]");
+            console.log("DATABASE_URL: ["+process.env.DATABASE_URL+"]", " is type ", typeof(process.env.DATABASE_URL));
             assert.notEqual(process.env.DATABASE_URL, undefined, 'DATABASE_URL is undefined');
             assert.equal(process.env.DATABASE_URL, 'postgres://postgres:@127.0.0.1/nopejs_test');
         });
@@ -23,6 +23,8 @@ describe('PostgreSQL', function() {
     describe('create user table', function() {
         it('should fail when unable to create the user table', function() {
             var entered = false;
+
+            /*
             pg.connect(process.env.DATABASE_URL, function (err, client) {
                 //TODO: this code is never being executed
                 console.log("We connected just fine.");
@@ -39,6 +41,7 @@ describe('PostgreSQL', function() {
                 });
                 client.end();
             });
+            */
             //console.log("How about now? : ", entered);
             //assert.equal(true, entered, 'PostgreSQL connection failed.');
         })
