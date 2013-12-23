@@ -46,7 +46,7 @@ describe('PostgreSQL', function() {
                 console.log("Do you even query bro?");
                 runaquery(err, result);
                 if(err) {
-                    console.log('realERROR', err);
+                    console.error('realERROR', err);
                     return;
                 }
                 console.log('real',result.rows);
