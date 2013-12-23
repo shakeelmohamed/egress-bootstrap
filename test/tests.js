@@ -35,7 +35,14 @@ describe('PostgreSQL', function() {
         it('should fail when unable to create the user table', function(done) {
             console.log("Nothing after this will work.");
             var nope_client = new pg.Client('postgres://postgres:@127.0.0.1/nopejs_test');
-            var q = nope_client.query("select * from user");
+            function runaquery(err, result) {
+                if(err) {
+                    console.log('ERROR', err);
+                    return;
+                }
+                console.log(result.rows);
+            }
+            var q = nope_client.query("select * from user", runaquery(err, result));
             console.log(q);
             console.log("Nothing before this will work.");
             done();
