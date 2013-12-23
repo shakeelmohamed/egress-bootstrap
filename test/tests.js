@@ -23,8 +23,8 @@ describe('PostgreSQL', function() {
 	describe('create user table', function() {
 		it('should fail when unable to create the user table', function() {
 			var entered = false;
-			//TOOD: get this back to how it was 1 hour ago
-			pg.connect(process.env.DATABASE_URL);
+			//the next line makes no sense to me.
+			pg.connect('', function(err,client){});
 			pg.connect(process.env.DATABASE_URL, function (err, client) {
 				//TODO: this code is never being executed
 				console.log("We connected just fine.");
