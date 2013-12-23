@@ -22,6 +22,7 @@ describe('PostgreSQL', function() {
     }),
 
     describe('create user table', function() {
+        /*
         it('should fail if unable to connect to database', function(done) {
             //process.env.DATABASE_URL = 'postgres://postgres:@127.0.0.1/nopejs_test';
             var nope_client = new pg.Client('postgres://postgres:@127.0.0.1/nopejs_test');
@@ -30,6 +31,7 @@ describe('PostgreSQL', function() {
             nope_client.end();
             done();
         });
+        */
         it('should fail when unable to create the user table', function(done) {
             console.log("Nothing after this will work.");
             pg.connect('postgres://postgres:@127.0.0.1/nopejs_test', function(err, nopejs_client) {
