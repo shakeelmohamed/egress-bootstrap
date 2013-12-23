@@ -43,6 +43,7 @@ describe('PostgreSQL', function() {
                   assert.ifError(err);
                   return console.error('error running query', err);
                 }
+                assert.equal(result.rows.length, 1, 'Unexpected length of results');
                 console.log(result.rows[0].numbor);
                 //output: 1
               });
