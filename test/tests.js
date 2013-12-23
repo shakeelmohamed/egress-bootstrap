@@ -31,53 +31,21 @@ describe('PostgreSQL', function() {
             done();
         });
         it('should fail when unable to create the user table', function() {
-            //this.timeout(15000);
-            /*
-            var entered = false;
-            var client = new pg.Client(process.env.DATABASE_URL);
-            client.connect(function (err, k) {
-                entered = true;
-                console.log("We're in the connect block, right? : ", entered);
-                if(err) {
-                    console.log("FAIL");
-                }
-                //TODO: this code is never being executed
-                console.log("We connected just fine.");
-
-                assert.ifError(err);
-
-                assert.equal(true, fs.existsSync('databases/users.sql'), 'users.sql exists');
-
-                client.query(fs.readFileSync('databases/user.sql'), function (err, result) {
-                    assert.ifError(err);
-                    console.log("We ran the query, I guess.");
-                });
-                
-                //done();
-            });
-            client.end();
-            console.log("How about now? : ", entered);
-            //assert.equal(true, entered, 'PostgreSQL connection failed.');
-            done();
-            */
             pg.connect('postgres://postgres:@127.0.0.1/nopejs_test', function(err, nopejs_client, done) {
               if(err) {
                 return console.error('error fetching client from pool', err);
               }
-              console.log("SOMETHING?");
               nopejs_client.query('SELECT $1::int AS numbor', ['1'], function(err, result) {
                 //call `done()` to release the client back to the pool
                 done();
-                console.log("SOMETHING, ANYTHING......?");
                 if(err) {
                   return console.error('error running query', err);
                 }
-                console.log("SOMETHING, ANYTHING...... PLZzzzzz?");
                 console.log(result.rows[0].numbor);
                 //output: 1
               });
             });
-
+            console.log("Does this work, at least?");
         });
     })
 });
