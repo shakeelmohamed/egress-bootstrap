@@ -15,8 +15,8 @@ describe('PostgreSQL', function() {
     describe('DATABASE_URL test', function() {
         it('should fail when DATABASE_URL is not set', function(done) {
             console.log("DATABASE_URL: ["+process.env.DATABASE_URL+"]", " is type ", typeof(process.env.DATABASE_URL));
-            //assert.notEqual(process.env.DATABASE_URL, undefined, 'DATABASE_URL is undefined');
-            //assert.equal(process.env.DATABASE_URL, 'postgres://postgres:@127.0.0.1/nopejs_test');
+            assert.notEqual(process.env.DATABASE_URL, undefined, 'DATABASE_URL is undefined');
+            assert.equal(process.env.DATABASE_URL, 'postgres://postgres:@127.0.0.1/nopejs_test');
             done();
         });
     });
@@ -24,18 +24,28 @@ describe('PostgreSQL', function() {
     describe('create user table', function() {
         it('should fail if unable to connect to database', function(done) {
             //process.env.DATABASE_URL = 'postgres://postgres:@127.0.0.1/nopejs_test';
-            var client = new pg.Client(process.env.DATABASE_URL);
-            assert.equal(client.user, 'postgres');
-            client.end();
+            //var clientx = new pg.Client();//process.env.DATABASE_URL);
+            //clientx.user = 'postgres';
+            //clientx.database = '';
+            //clientx.host = '';
+            var nope_client = new pg.Client('postgres://postgres:@127.0.0.1/nopejs_test');
+            assert.equal(nope_client.user, 'postgres'); //For some reason, client.user is smohamed
+            console.log(nope_client);
+            nope_client.end();
+            done();
         });
         it('should fail when unable to create the user table', function(done) {
+            /*
             var entered = false;
             var client = new pg.Client(process.env.DATABASE_URL);
-            client.connect(process.env.DATABASE_URL, function (err) {
-                //TODO: this code is never being executed
-                console.log("We connected just fine.");
+            client.connect(function (err, k) {
                 entered = true;
                 console.log("We're in the connect block, right? : ", entered);
+                if(err) {
+                    console.log("FAIL");
+                }
+                //TODO: this code is never being executed
+                console.log("We connected just fine.");
 
                 assert.ifError(err);
 
@@ -52,6 +62,23 @@ describe('PostgreSQL', function() {
             console.log("How about now? : ", entered);
             //assert.equal(true, entered, 'PostgreSQL connection failed.');
             done();
+            */
+            pg.connect(process.env.DATABASE_URL, function(err, nopejs_client, done) {
+              if(err) {
+                return console.error('error fetching client from pool', err);
+              }
+              nopejs_client.query('SELECT $1::int AS numbor', ['1'], function(err, result) {
+                //call `done()` to release the client back to the pool
+                done();
+
+                if(err) {
+                  return console.error('error running query', err);
+                }
+                console.log(result.rows[0].numbor);
+                //output: 1
+              });
+            });
+
         });
     })
 });
