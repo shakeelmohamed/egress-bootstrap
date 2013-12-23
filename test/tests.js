@@ -42,8 +42,14 @@ describe('PostgreSQL', function() {
                 }
                 console.log(result.rows);
             }
-            var q = nope_client.query("select * from user", runaquery(err, result));
-            console.log(q);
+            nope_client.query("select * from user", function(err, result) {
+                runaquery(err, result);
+                if(err) {
+                    console.log('realERROR', err);
+                    return;
+                }
+                console.log('real',result.rows);
+            });
             console.log("Nothing before this will work.");
             done();
         });
