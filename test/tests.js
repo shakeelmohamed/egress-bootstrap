@@ -23,8 +23,9 @@ describe('PostgreSQL', function() {
 	describe('create user table', function() {
 		it('should fail when unable to create the user table', function() {
 			var entered = false;
-			var client = new pg.Client(process.env.DATABASE_URL);
-			client.connect(function (err) {
+			//TOOD: get this back to how it was 1 hour ago
+			pg.connect(process.env.DATABASE_URL);
+			pg.connect(process.env.DATABASE_URL, function (err, client) {
 				//TODO: this code is never being executed
 				console.log("We connected just fine.");
 				entered = true;
@@ -38,8 +39,8 @@ describe('PostgreSQL', function() {
 					assert.ifError(err);
 					console.log("We ran the query, I guess.");
 				});
+				client.end();
 			});
-			client.end();
 			//console.log("How about now? : ", entered);
 			//assert.equal(true, entered, 'PostgreSQL connection failed.');
 		})
