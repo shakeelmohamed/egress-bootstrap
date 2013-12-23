@@ -21,7 +21,7 @@ describe('PostgreSQL', function() {
         });
     }),
 
-    describe('create user table', function() {
+    //describe('create user table', function() {
         /*
         it('should fail if unable to connect to database', function(done) {
             //process.env.DATABASE_URL = 'postgres://postgres:@127.0.0.1/nopejs_test';
@@ -35,24 +35,19 @@ describe('PostgreSQL', function() {
         it('should fail when unable to create the user table', function(done) {
             console.log("Nothing after this will work.");
             var nope_client = new pg.Client('postgres://postgres:@127.0.0.1/nopejs_test');
-            function runaquery(err, result) {
-                if(err) {
-                    console.log('ERROR', err);
-                    return;
-                }
-                console.log(result.rows);
-            }
+            nope_client.connect();
             nope_client.query("select * from user", function(err, result) {
                 console.log("Do you even query bro?");
-                runaquery(err, result);
                 if(err) {
+                    assert.ifError(err);
                     console.error('realERROR', err);
                     return;
                 }
                 console.log('real',result.rows);
+                assert.equal(result.rows.length, 0);
             });
             console.log("Nothing before this will work.");
             done();
         });
-    })
+    //})
 });
