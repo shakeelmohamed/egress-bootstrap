@@ -31,6 +31,7 @@ describe('PostgreSQL', function() {
             done();
         });
         it('should fail when unable to create the user table', function(done) {
+            console.log("Nothing after this will work.");
             pg.connect('postgres://postgres:@127.0.0.1/nopejs_test', function(err, nopejs_client) {
               if(err) {
                 assert.ifError(err);
@@ -49,7 +50,7 @@ describe('PostgreSQL', function() {
               });
               done();
             });
-            //console.log("Does this work, at least?");
+            console.log("Nothing before this will work.");
         });
     })
 });
