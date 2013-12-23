@@ -34,25 +34,11 @@ describe('PostgreSQL', function() {
         */
         it('should fail when unable to create the user table', function(done) {
             console.log("Nothing after this will work.");
-            pg.connect('postgres://postgres:@127.0.0.1/nopejs_test', function(err, nopejs_client) {
-              if(err) {
-                assert.ifError(err);
-                return console.error('error fetching client from pool', err);
-              }
-              nopejs_client.query('SELECT $1::int AS numbor', ['1'], function(err, result) {
-                //call `done()` to release the client back to the pool
-                if(err) {
-                  assert.ifError(err);
-                  return console.error('error running query', err);
-                }
-                assert.equal(result.rows.length, 1, 'Unexpected length of results');
-                console.log(result.rows[0].numbor);
-                //output: 1
-                client.end();
-              });
-              done();
-            });
+            var nope_client = new pg.Client('postgres://postgres:@127.0.0.1/nopejs_test');
+            var q = nope_client.query("select * from user");
+            console.log(q);
             console.log("Nothing before this will work.");
+            done();
         });
     })
 });
