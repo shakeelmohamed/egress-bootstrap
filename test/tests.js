@@ -31,8 +31,8 @@ describe('PostgreSQL', function() {
             //nope_client.end();
             done();
         });
-        it('should fail when unable to create the user table', function(done) {
-            this.timeout(15000);
+        it('should fail when unable to create the user table', function() {
+            //this.timeout(15000);
             /*
             var entered = false;
             var client = new pg.Client(process.env.DATABASE_URL);
