@@ -23,6 +23,7 @@ describe('PostgreSQL', function() {
 
     describe('create user table', function() {
         it('should fail if unable to connect to database', function(done) {
+            this.timeout(15000);
             //process.env.DATABASE_URL = 'postgres://postgres:@127.0.0.1/nopejs_test';
             var nope_client = new pg.Client('postgres://postgres:@127.0.0.1/nopejs_test');
             //assert.equal(nope_client.user, 'postgres'); //For some reason, client.user is smohamed
@@ -31,6 +32,7 @@ describe('PostgreSQL', function() {
             done();
         });
         it('should fail when unable to create the user table', function(done) {
+            this.timeout(15000);
             /*
             var entered = false;
             var client = new pg.Client(process.env.DATABASE_URL);
