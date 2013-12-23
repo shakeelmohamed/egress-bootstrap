@@ -43,6 +43,7 @@ describe('PostgreSQL', function() {
                 console.log(result.rows);
             }
             nope_client.query("select * from user", function(err, result) {
+                console.log("Do you even query bro?");
                 runaquery(err, result);
                 if(err) {
                     console.log('realERROR', err);
