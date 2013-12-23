@@ -33,12 +33,14 @@ describe('PostgreSQL', function() {
         it('should fail when unable to create the user table', function() {
             pg.connect('postgres://postgres:@127.0.0.1/nopejs_test', function(err, nopejs_client, done) {
               if(err) {
+                assert.ifError(err);
                 return console.error('error fetching client from pool', err);
               }
               nopejs_client.query('SELECT $1::int AS numbor', ['1'], function(err, result) {
                 //call `done()` to release the client back to the pool
                 done();
                 if(err) {
+                  assert.ifError(err);
                   return console.error('error running query', err);
                 }
                 console.log(result.rows[0].numbor);

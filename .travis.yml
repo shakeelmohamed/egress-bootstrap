@@ -9,5 +9,5 @@ env:
 before_script:
     - npm ls
     - psql -c 'create database nopejs_test;' -U postgres
-    - psql \dp
+    - psql -c \dp
     #- psql -d nopejs_test -f databases/user.sql  -U postgres
