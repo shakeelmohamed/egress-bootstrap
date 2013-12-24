@@ -1,18 +1,17 @@
 language: node_js
 node_js: 0.10.x
 notifications:
-    email: false
+  email: false
 services: PostgreSQL
 env:
-    DATABASE_URL: postgres://postgres:@127.0.0.1/nopejs_test
+  DATABASE_URL: postgres://postgres:@127.0.0.1/nopejs_test
 before_script:
-    - npm ls
-    - psql -c 'create database nopejs_test;' -U postgres
-    #- psql -d nopejs_test -f databases/user.sql  -U postgres
-    #TODO: Run some more postgres queries here to initialize the DB with a test user, etc.
+- npm ls
+- psql -c 'create database nopejs_test;' -U postgres
 deploy:
-    provider: heroku
-    api_key: a4e05beb50b9f0e1923af41d45cd3c059dd08aa4
-    app:
-        master: nopejs
-        develop: nopejs-dev
+  provider: heroku
+  api_key:
+    secure: Zs4H1X5yvsZ4RDS1Y7x58YZbuSwdp16WdoOgVjAHXkM8nQCLJEOEyx3/yTuztMK4w3f9WPWFed1JfQKPPKJx19fbn7QPMnMdZ3vDKKs8HYQ6fa7PNcNob9t8EMyQ/9Cgt0l/pFqkMO0OmSeELFDWsmC4VAoZRSlmXHzrSqlMYPw=
+  app:
+    master: nopejs
+    develop: nopejs-dev
