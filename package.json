@@ -27,5 +27,5 @@
   "bugs": {
     "url": "https://github.com/shakeelmohamed/Nope.js/issues"
   },
-  "engine": { "node" : ">=0.10.0" }
+  "engine": { "node" : "0.10.x" }
 }
