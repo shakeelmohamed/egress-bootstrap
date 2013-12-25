@@ -33,7 +33,8 @@ exports.init = function (app) {
             }
             if(post.login == 'login')
             {
-                client.query("SELECT * from subject where nicename='"+post.user+"'", function (err, result) {
+                //TODO: this select should only get one result, but let's be explicit and limit results to 1
+                client.query("SELECT * from users where username='"+post.user+"'", function (err, result) {
                     if (err || result.rows.length === 0) {
                         res.render('login', getViewData('Login', 'login', req.session.user_id, 'Error: login failed'));
                         client.end();
@@ -69,7 +70,7 @@ exports.init = function (app) {
             {
                 //TODO: handle registration processs, sanitize before doing the insert.
                 //TODO: insert query must be run asynch, to get the callback for errors like non-unique values, etc.
-                client.query("insert into subject (subjectid, nicename, email, secret) values (DEFAULT, '"+post.user+"', '"+post.email+"', '"+bcrypt.hashSync(post.password)+"')", function (err, result) {
+                client.query("insert into users (userid, username, email, secret) values (DEFAULT, '"+post.user+"', '"+post.email+"', '"+bcrypt.hashSync(post.password)+"')", function (err, result) {
                     if (err) {
                         console.log("ERROR ON REGISTRATION: "+err);
                     }

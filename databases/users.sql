@@ -1,8 +1,8 @@
--- Table: user
+-- Table: users
 
--- DROP TABLE user;
+-- DROP TABLE users;
 
-CREATE TABLE user
+CREATE TABLE users
 (
   userid serial NOT NULL,
   username text NOT NULL,
