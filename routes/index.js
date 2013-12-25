@@ -19,47 +19,16 @@ exports.init = function (app) {
     var controllers = new controllerSet(getViewData);
 
     app.get('/', controllers.home.get);
+
     app.get('/404', controllers._404.get);
 
     app.get('/login', controllers.login.get);
     app.post('/login', controllers.login.post);
-    /*
-    app.post('/login', function (req, res) {
-        var post = req.body;
-        //TODO: add some data validation: email, password format, string length, sql sanitize
-        pg.connect(process.env.DATABASE_URL, function (err, client) {
-            if (err) {
-                return console.error('could not connect to postgres', err);
-            }
-            if(post.login == 'login')
-            {
-                //TODO: this select should only get one result, but let's be explicit and limit results to 1
-                client.query("SELECT * from users where username='"+post.user+"'", function (err, result) {
-                    if (err || result.rows.length === 0) {
-                        res.render('login', getViewData('Login', 'login', req.session.user_id, 'Error: login failed'));
-                        client.end();
-                    }
-                    else {
-                        if ( bcrypt.compareSync(post.password, result.rows[0].secret) ) {
-                            req.session.user_id = post.user;
-                            res.redirect('/account');
-                        }
-                        else {
-                            res.render('login', getViewData('Login', 'login', req.session.user_id, 'Error: login failed'));
-                        }
-                        client.end();
-                    }
-                });
-            }
-            else {
-                res.render('login', getViewData('Login', 'login', req.session.user_id, 'Error: login failed, unexpected form data'));
-            }
-        });
-    });
-    */
     
     app.get('/join', controllers.join.get);
+    app.post('/join', controllers.login.post);
 
+    /*
     app.post('/join', function (req, res) {
         var post = req.body;
         //TODO: add some data validation: email, password format, string length, sql sanitize
@@ -87,6 +56,7 @@ exports.init = function (app) {
             }
         });
     });
+    */
     
     app.get('/logout', controllers.logout.get);
 
