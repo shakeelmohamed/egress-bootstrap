@@ -23,9 +23,9 @@ exports.init = function (app) {
 
     app.get('/login', controllers.login.get);
 
+    /*
     app.post('/login', function (req, res) {
         var post = req.body;
-
         //TODO: add some data validation: email, password format, string length, sql sanitize
         pg.connect(process.env.DATABASE_URL, function (err, client) {
             if (err) {
@@ -56,6 +56,7 @@ exports.init = function (app) {
             }
         });
     });
+    */
     
     app.get('/join', controllers.join.get);
 
@@ -87,13 +88,6 @@ exports.init = function (app) {
         });
     });
     
-    //TODO: remove once this is verfied & working
-    /*
-    app.get('/logout', function (req, res) {
-        delete req.session.user_id;
-        res.redirect('/login');
-    });
-    */
     app.get('/logout', controllers.logout.get);
 
     /**Function to check if a user is logged in**/
@@ -107,11 +101,5 @@ exports.init = function (app) {
             next();
     }
 
-    //TODO: remove once this is verified & working
-    /*
-    app.get('/account', checkAuth, function(req, res){
-        res.render('account', getViewData('Account', 'account', req.session.user_id));
-    });
-    */
     app.get('/account', checkAuth, controllers.account.get);
 };
