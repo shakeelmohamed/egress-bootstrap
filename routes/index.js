@@ -5,7 +5,7 @@ exports.init = function (app) {
     controllerSet = require('../controllers');
 
     function getViewData (title, pathSuffix, userID, message) {
-        // Set app.locals in web.js
+        // Set app.locals in web.js; this function gets passed around to all controllers
         return {
             sitename: app.locals.sitename,
             author: app.locals.author,
@@ -16,52 +16,9 @@ exports.init = function (app) {
         };
     }
 
-    var controllers = new controllerSet(getViewData);
-
-    app.get('/', controllers.home.get);
-
-    app.get('/404', controllers._404.get);
-
-    app.get('/login', controllers.login.get);
-    app.post('/login', controllers.login.post);
-    
-    app.get('/join', controllers.join.get);
-    app.post('/join', controllers.join.post);
-
-    /*
-    app.post('/join', function (req, res) {
-        var post = req.body;
-        //TODO: add some data validation: email, password format, string length, sql sanitize
-        pg.connect(process.env.DATABASE_URL, function (err, client) {
-            if (err) {
-                return console.error('could not connect to postgres', err);
-            }
-            if(post.register == 'register')
-            {
-                //TODO: handle registration processs, sanitize before doing the insert.
-                //TODO: insert query must be run asynch, to get the callback for errors like non-unique values, etc.
-                client.query("insert into users (userid, username, email, secret) values (DEFAULT, '"+post.user+"', '"+post.email+"', '"+bcrypt.hashSync(post.password)+"')", function (err, result) {
-                    if (err) {
-                        console.log("ERROR ON REGISTRATION: "+err);
-                    }
-                    else {
-                        console.log("I think registration worked.");
-                        req.session.user_id = post.user;
-                        res.redirect('account');
-                    }
-                });
-            }
-            else {
-                res.render('join', getViewData('Join', 'join', null, 'Error: login failed, unexpected form data'));//{title: 'Join', loc: 'join', msg: 'Error: login failed, unexpected form data'});
-            }
-        });
-    });
-    */
-    
-    app.get('/logout', controllers.logout.get);
-
-    /**Function to check if a user is logged in**/
     function checkAuth(req, res, next) {
+        // Function to check if a user is logged in
+
         //set boolean to true for checking if a user is authorized
         if (!req.session.user_id) {
             //Send user to the login page if they're not authorized
@@ -71,5 +28,20 @@ exports.init = function (app) {
             next();
     }
 
+    //Lovely controller routing
+    var controllers = new controllerSet(getViewData);
+
+    app.get('/', controllers.home.get);
+
+    app.get('/404', controllers._404.get);
+
+    app.get('/logout', controllers.logout.get);
+
     app.get('/account', checkAuth, controllers.account.get);
+
+    app.get('/login', controllers.login.get);
+    app.post('/login', controllers.login.post);
+    
+    app.get('/join', controllers.join.get);
+    app.post('/join', controllers.join.post);
 };

@@ -15,7 +15,8 @@
                 var pg = require('pg');
                 var bcrypt = require('bcrypt-nodejs');
                 var post = req.body;
-                //TODO: add some data validation: email, password format, string length, sql sanitize
+                
+                //TODO: add some data validation: email, password format, string length, SQL sanitize
                 pg.connect(process.env.DATABASE_URL, function (err, client) {
                     if (err) {
                         return console.error('could not connect to postgres', err);
