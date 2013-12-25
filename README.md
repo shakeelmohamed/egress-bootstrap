@@ -15,12 +15,12 @@ It's a minimal user account login system built with PostgreSQL support.
 
 * If using Heroku:
     1. Authenticate via the Heroku command line, `heroku login`.
-    2. Execute `heroku config:set DATABASE_URL=postgres://<username>:<password>@<host>/<dbname>`.
+    2. Execute `heroku config:set DATABASE_URL=postgres://<username>:<password>@<host>:<port>/<dbname>`.
     3. Push your code up to your Heroku app, done.
 * If using foreman:
     1. Create a `.env` file in the root directory of this project.
     2. In your `.env` file add your PostgreSQL connection string in the following format
-    `DATABASE_URL=postgres://<username>:<password>@<host>/<dbname>`, this will allow your application to connect to your database.
+    `DATABASE_URL=postgres://<username>:<password>@<host>:<port>/<dbname>`, this will allow your application to connect to your database.
     3. Running `foreman start` will process the `DATABASE_URL` value, locally.
 * If using something else
     * Submit a pull request.

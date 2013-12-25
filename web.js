@@ -6,7 +6,7 @@ var express = require('express'),
 
 app.configure(function () {
     app.locals({
-        sitename: 'Nope.JS',
+        sitename: 'Nope.js',
         author: 'Shakeel Mohamed'
     });
     app.locals.pretty = true;
