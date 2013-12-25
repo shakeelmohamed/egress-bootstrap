@@ -12,7 +12,6 @@
                 }
             },
             post: function(req, res) {
-                //TODO
                 var pg = require('pg');
                 var post = req.body;
                 //TODO: add some data validation: email, password format, string length, sql sanitize

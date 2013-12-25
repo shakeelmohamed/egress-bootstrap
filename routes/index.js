@@ -22,7 +22,7 @@ exports.init = function (app) {
     app.get('/404', controllers._404.get);
 
     app.get('/login', controllers.login.get);
-
+    app.post('/login', controllers.login.post);
     /*
     app.post('/login', function (req, res) {
         var post = req.body;
