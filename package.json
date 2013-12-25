@@ -10,7 +10,15 @@
     "pg": "2.x"
   },
   "devDependencies": {
-    "mocha": "1.16.x"
+    "mocha": "1.16.x",
+    "jshint" : "0.5.x"
+  },
+  "jshintConfig": {
+    "camelcase": true,
+    "indent": 4,
+    "node": true,
+    "quotmark": "double",
+    "trailing": true
   },
   "repository": {
     "type": "git",
