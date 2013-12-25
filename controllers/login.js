@@ -13,7 +13,7 @@
             },
             post: function(req, res) {
                 var pg = require('pg');
-                var bcrypt = require('bcrypt-nodejs'),
+                var bcrypt = require('bcrypt-nodejs');
                 var post = req.body;
                 //TODO: add some data validation: email, password format, string length, sql sanitize
                 pg.connect(process.env.DATABASE_URL, function (err, client) {
