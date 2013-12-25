@@ -26,7 +26,7 @@ exports.init = function (app) {
     app.post('/login', controllers.login.post);
     
     app.get('/join', controllers.join.get);
-    app.post('/join', controllers.login.post);
+    app.post('/join', controllers.join.post);
 
     /*
     app.post('/join', function (req, res) {
