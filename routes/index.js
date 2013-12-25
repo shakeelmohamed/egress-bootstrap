@@ -1,37 +1,27 @@
-exports.init = function (app, config) {
+exports.init = function (app) {
     var pg = require('pg'),
     jade = require('jade'),
-    bcrypt = require('bcrypt-nodejs');
+    bcrypt = require('bcrypt-nodejs'),
+    controllerSet = require('../controllers');
 
     function getViewData (title, pathSuffix, userID, message) {
-        // Set the config values in web.js
+        // Set app.locals in web.js
         return {
-            sitename: config.sitename,
-            author: config.author,
+            sitename: app.locals.sitename,
+            author: app.locals.author,
             title: title,
             loc: pathSuffix,
-            user: userID
+            user: userID,
+            msg: message
         };
     }
 
-    app.get('/', function (req, res) {
-        res.render('index', getViewData('Home', 'home', req.session.user_id));
-    });
+    var controllers = new controllerSet(getViewData);
 
-    app.get('/404', function (req, res) {
-        res.render('404', getViewData('404', '', req.session.user_id));
-    });
+    app.get('/', controllers.home.get);
+    app.get('/404', controllers._404.get);
 
-    app.get('/login', function (req, res) {
-        if (req.session.user_id) {
-            //Send user to the account page if they're authorized
-            //TODO: make this a middleware function for code reuse
-            res.redirect('account');
-        }
-        else {
-            res.render('login', getViewData('Login', 'login'));
-        }
-    });
+    app.get('/login', controllers.login.get);
 
     app.post('/login', function (req, res) {
         var post = req.body;
@@ -65,16 +55,8 @@ exports.init = function (app, config) {
             }
         });
     });
-
-    app.get('/join', function (req, res) {
-        if (req.session.user_id) {
-            //Send user to the account page if they're authorized
-            res.redirect('account');
-        }
-        else {
-            res.render('join', getViewData('Join', 'join'));
-        }
-    });
+    
+    app.get('/join', controllers.join.get);
 
     app.post('/join', function (req, res) {
         var post = req.body;
@@ -103,11 +85,15 @@ exports.init = function (app, config) {
             }
         });
     });
-
+    
+    //TODO: remove once this is verfied & working
+    /*
     app.get('/logout', function (req, res) {
         delete req.session.user_id;
         res.redirect('/login');
     });
+    */
+    app.get('/logout', controllers.logout.get);
 
     /**Function to check if a user is logged in**/
     function checkAuth(req, res, next) {
@@ -116,13 +102,15 @@ exports.init = function (app, config) {
             //Send user to the login page if they're not authorized
             res.redirect('login');
         }
-        else {
+        else 
             next();
-        }
     }
 
-    /**Pages that require user to be logged in**/
+    //TODO: remove once this is verified & working
+    /*
     app.get('/account', checkAuth, function(req, res){
         res.render('account', getViewData('Account', 'account', req.session.user_id));
     });
+    */
+    app.get('/account', checkAuth, controllers.account.get);
 };
