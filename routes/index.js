@@ -1,8 +1,8 @@
 exports.init = function (app) {
-    var pg = require("pg"),
-    jade = require("jade"),
-    bcrypt = require("bcrypt-nodejs"),
-    controllerSet = require("../controllers");
+    var pg = require("pg");
+    var jade = require("jade");
+    var bcrypt = require("bcrypt-nodejs");
+    var controllerSet = require("../controllers");
 
     function getViewData (title, pathSuffix, userID, message) {
         // Set app.locals in web.js; this function gets passed around to all controllers
@@ -17,15 +17,13 @@ exports.init = function (app) {
     }
 
     function checkAuth(req, res, next) {
-        // Function to check if a user is logged in
-
-        //set boolean to true for checking if a user is authorized
         if (!req.session.userID) {
             //Send user to the login page if they're not authorized
             res.redirect("login");
         }
-        else
+        else {
             next();
+        }
     }
 
     //Lovely controller routing
