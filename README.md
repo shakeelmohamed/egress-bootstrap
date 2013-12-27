@@ -29,7 +29,7 @@ It's a minimal user account login system built with PostgreSQL support.
 
     This will allow your application to connect to your database.
     3. Running `foreman start` will process the `DATABASE_URL` and `PGSSLMODE` values, locally.
-    4. If you want to the tests, use `foreman run mocha test` from the root directory of this repository.
+    4. If you want to the tests, use `foreman run npm test` from the root directory of this repository.
 * If using something else
     * Submit a pull request.
 
