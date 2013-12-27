@@ -8,6 +8,7 @@ env:
 before_script:
 - npm ls
 - psql -c 'create database nopejs_test;' -U postgres
+- psql -f databases/users.sql -U postgres
 deploy:
   provider: heroku
   api_key:
