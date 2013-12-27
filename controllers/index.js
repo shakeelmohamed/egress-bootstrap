@@ -3,7 +3,7 @@
         //Here we're exporting an object constructor
 
         // Get a list of all files in the controllers folder
-        var controllers = require("fs").readdirSync("./controllers");
+        var controllers = require("fs").readdirSync(__dirname);
 
         for(var i=0; i<controllers.length; i++) {
             //Try tp remove the .js extension from all of these files

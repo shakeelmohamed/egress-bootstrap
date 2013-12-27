@@ -1,8 +1,9 @@
 var express = require("express"),
     jade = require("jade"),
     pg = require("pg"),
-    app = express(),
     routes = require("./routes");
+
+var app = module.exports = express();
 
 app.configure(function () {
     app.locals({
@@ -24,9 +25,3 @@ app.configure(function () {
 });
 
 routes.init(app);
-
-var port = process.env.PORT || 5000;
-
-app.listen(port, function() {
-    console.log("Listening on " + port);
-});

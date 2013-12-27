@@ -10,10 +10,12 @@
     "pg": "2.x"
   },
   "devDependencies": {
+    "jshint": "0.5.x",
     "mocha": "1.16.x",
-    "jshint" : "0.5.x"
+    "zombie": "2.0.0-alpha24"
   },
   "jshintConfig": {
+    "curly": true,
     "camelcase": true,
     "indent": 4,
     "node": true,
@@ -25,7 +27,7 @@
     "url": "https://github.com/shakeelmohamed/Nope.js"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha test/index.js"
   },
   "keywords": [
     "Postgres"
@@ -35,5 +37,7 @@
   "bugs": {
     "url": "https://github.com/shakeelmohamed/Nope.js/issues"
   },
-  "engine": { "node" : "0.10.x" }
+  "engine": {
+    "node": "0.10.x"
+  }
 }
