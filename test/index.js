@@ -1,6 +1,6 @@
 var pg = require("pg");
 var assert = require("assert");
-var zombie = require("zombie");
+//var zombie = require("zombie");
 var mocha = require("mocha");
 
 var app = require("../app");
