@@ -7,7 +7,7 @@ env:
   DATABASE_URL: postgres://postgres:@127.0.0.1/nopejs_test
 before_script:
 - sudo apt-get install python-software-properties
-- sudo add-apt-repository ppa:chris-lea/node.js
+- sudo add-apt-repository ppa:chris-lea/node.js -y
 - sudo apt-get update
 - npm install zombie
 - npm ls
