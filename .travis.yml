@@ -6,7 +6,10 @@ services: PostgreSQL
 env:
   DATABASE_URL: postgres://postgres:@127.0.0.1/nopejs_test
 before_script:
-#- sudo apt-get install python-software-properties
+- apt-get install python-software-properties
+- add-apt-repository ppa:chris-lea/node.js
+- apt-get update
+- npm install zombie
 - npm ls
 - psql -c 'create database nopejs_test;' -U postgres
 - psql -f databases/users.sql -U postgres -d nopejs_test
