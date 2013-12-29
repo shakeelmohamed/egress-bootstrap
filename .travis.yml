@@ -7,7 +7,6 @@ env:
   DATABASE_URL: postgres://postgres:@127.0.0.1/nopejs_test
 before_script:
 #- sudo apt-get install python-software-properties
-- sudo npm update
 - npm ls
 - psql -c 'create database nopejs_test;' -U postgres
 - psql -f databases/users.sql -U postgres -d nopejs_test
