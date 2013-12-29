@@ -8,8 +8,7 @@ env:
 before_script:
 - sudo apt-get install python-software-properties
 - sudo add-apt-repository ppa:chris-lea/node.js -y
-#- sudo apt-get update
-- npm install zombie
+#- npm install zombie
 - npm ls
 - psql -c 'create database nopejs_test;' -U postgres
 - psql -f databases/users.sql -U postgres -d nopejs_test
