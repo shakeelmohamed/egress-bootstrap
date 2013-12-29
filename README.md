@@ -1,11 +1,29 @@
 Nope.js
 ====
 
-[![Build Status](https://travis-ci.org/shakeelmohamed/Nope.js.png)](https://travis-ci.org/shakeelmohamed/Nope.js)
+Build Status:
+<table>
+    <tr>
+        <th>Branch</th>
+        <th>Status</th>
+    </tr>
+    <tr>
+        <td>Master</td>
+        <td>
+            <img src="https://travis-ci.org/shakeelmohamed/Nope.js.png?branch=master" />
+        </td>
+    </tr>
+    <tr>
+        <td>Develop</td>
+        <td>
+            <img src="https://travis-ci.org/shakeelmohamed/Nope.js.png?branch=develop" />
+        </td>
+    </tr>
+</table>
 
 NOPE is an acronym:
 * Node.js
-* Organized (read: OCD)
+* Organized
 * PostgreSQL
 * Experience
 
@@ -29,10 +47,15 @@ It's a minimal user account login system built with PostgreSQL support.
 
     This will allow your application to connect to your database.
     3. Running `foreman start` will process the `DATABASE_URL` and `PGSSLMODE` values, locally.
-    4. If you want to the tests, use `foreman run npm test` from the root directory of this repository.
-* If using something else
+
+* If using anything else
     * Submit a pull request.
+
+## Running the tests
+
+* Make sure your environment is setup to run [Zombie.js](http://zombie.labnotes.org/#Infection)
+* If you want to run the tests, execute `npm test` (or `foreman run npm test` if using foreman) from the root directory of this repository.
 
 # License
 
-This projected is licensed under the terms of [the MIT license](LICENSE).
+This project is licensed under the terms of [the MIT license](LICENSE).
