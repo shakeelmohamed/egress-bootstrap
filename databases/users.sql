@@ -10,5 +10,5 @@ CREATE TABLE users
   secret text NOT NULL,
   CONSTRAINT "PRIMARY" PRIMARY KEY (userid),
   CONSTRAINT email_unique UNIQUE (email),
-  CONSTRAINT nicename_unique UNIQUE (username)
+  CONSTRAINT username_unique UNIQUE (username)
 )
