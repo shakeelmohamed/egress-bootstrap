@@ -31,6 +31,7 @@
                             }
                             else {
                                 if ( bcrypt.compareSync(post.password, result.rows[0].secret) ) {
+                                    console.log("Login worked for", post.user);
                                     req.session.userID = post.user;
                                     res.redirect("/account");
                                 }

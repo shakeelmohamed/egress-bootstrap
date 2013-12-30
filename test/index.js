@@ -20,10 +20,9 @@ describe("Bcrypt", function(){
     });
 });
 
-
 describe("PostgreSQL", function(){
     describe("credentials", function() {
-        it("should connect to a database, and query version", function(done) {
+        it("should connect to a database, and query the version", function(done) {
             pg.connect(process.env.DATABASE_URL, function (err, client) {
                 if(err) {
                     console.log(err);
@@ -48,10 +47,9 @@ describe("PostgreSQL", function(){
     });
 });
 
-describe("Application tests:", function() {
-    //TODO: each form should be it's own set of tests, make the browser & server vars outside of any set
-    describe("Join form", function() {
-        it("Should contain all form elements", function(done) {
+describe("Join form:", function() {
+    describe("elements", function(){
+        it("should match what is expected", function(done) {
             browser.visit("/join")
             .then(function() {
                 assert.equal(browser.text("h2"), "Join "+app.locals.sitename);
@@ -62,29 +60,38 @@ describe("Application tests:", function() {
             })
             .then(done);
         });
-        it("Should create a test user via the registration form", function(done) {
+    });
+    describe("script", function(){
+        it("should create a test user via the registration form", function(done) {
             browser.visit("/join", function(){
                 browser.fill("user", testuser.username);
                 browser.fill("email", testuser.email);
                 browser.fill("password", testuser.password);
                 browser.pressButton("register", function() {
                     assert.ok(browser.success);
+                    done();
                 });
-                done();
+                //At this point the user will have been logged in, and redirected to /account
             });
         });
     });
-    describe("Join form", function() {
-        it("Should logout", function(done){
+});
+
+describe("Logout:", function(){
+    describe("script", function(){
+        it("should logout the test user", function(done){
             browser.visit("/logout", function(){
                 assert.ok(browser.success);
                 done();
+                //At this point the user will have been logged out, and redirected to /login
             });
         });
     });
+});
 
-    describe("Login form", function() {
-        it("Should contain all form elements", function(done) {
+describe("Login form:", function(){
+    describe("elements", function(){
+        it("should match what is expected", function(done) {
             browser.visit("/login")
             .then(function() {
                 assert.equal(browser.text("h2"), "Login to "+app.locals.sitename);
@@ -92,17 +99,44 @@ describe("Application tests:", function() {
                 assert.ok(browser.query("#password"), "Couldn't find password field.");
                 assert.ok(browser.query("#login"), "Couldn't find login button.");
             })
-            .then(done, done);
+            .then(done);
         });
-        it("Should login as a user", function(done) {
+    });
+
+    describe("script", function(){
+        it("should login as a user", function(done) {
             browser.visit("/login", function(){
                 browser.fill("user", testuser.username);
                 browser.fill("password", testuser.password);
                 browser.pressButton("login", function() {
                     assert.ok(browser.success);
+                    done();
                 });
-                done();
             });
+        });
+    });    
+});
+
+describe("Test user:", function(){
+    it("should be deleted from the PostgreSQL database", function(done) {
+        pg.connect(process.env.DATABASE_URL, function (err, client) {
+            if(err) {
+                console.log(err);
+                assert.ifError(err, "Unable to connect to database.");
+            }
+            else {
+                client.query("delete from users where username = $1", [testuser.username], function(err, result) {
+                    if(err) {
+                        assert.ifError(err, "Unable to delete test user.");
+                        done();
+                    }
+                    else {
+                        assert.equal(true, !!result, "Result object invalid.");
+                        assert.equal(1 , result.rowCount, "Test user not found in database.");
+                        done();
+                    }
+                });
+            }
         });
     });
 });
