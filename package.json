@@ -30,7 +30,14 @@
     "test": "mocha test/index.js"
   },
   "keywords": [
-    "Postgres"
+    "Postgres",
+    "PostgreSQL",
+    "express",
+    "expressJS",
+    "minimal",
+    "user"
+    "account",
+    "system"
   ],
   "author": "Shakeel Mohamed",
   "license": "MIT",
