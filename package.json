@@ -1,5 +1,5 @@
 {
-  "name": "Nope.JS",
+  "name": "nope.js",
   "version": "0.0.1",
   "description": "A minimal user account login system built for a PostgreSQL back-end",
   "main": "web.js",
@@ -30,7 +30,14 @@
     "test": "mocha test/index.js"
   },
   "keywords": [
-    "Postgres"
+    "Postgres",
+    "PostgreSQL",
+    "express",
+    "expressJS",
+    "minimal",
+    "user",
+    "account",
+    "system"
   ],
   "author": "Shakeel Mohamed",
   "license": "MIT",
