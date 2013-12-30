@@ -1,5 +1,5 @@
 {
-  "name": "nope.JS",
+  "name": "nope.js",
   "version": "0.0.1",
   "description": "A minimal user account login system built for a PostgreSQL back-end",
   "main": "web.js",
