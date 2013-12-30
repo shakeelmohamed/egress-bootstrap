@@ -1,0 +1,43 @@
+{
+  "name": "Nope.JS",
+  "version": "0.0.1",
+  "description": "A minimal user account login system built for a PostgreSQL back-end",
+  "main": "web.js",
+  "dependencies": {
+    "bcrypt-nodejs": "0.x.3",
+    "express": "3.x",
+    "jade": "0.35.0",
+    "pg": "2.x"
+  },
+  "devDependencies": {
+    "jshint": "0.5.x",
+    "mocha": "1.16.x",
+    "zombie": "2.0.0-alpha24"
+  },
+  "jshintConfig": {
+    "curly": true,
+    "camelcase": true,
+    "indent": 4,
+    "node": true,
+    "quotmark": "double",
+    "trailing": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shakeelmohamed/Nope.js"
+  },
+  "scripts": {
+    "test": "mocha test/index.js"
+  },
+  "keywords": [
+    "Postgres"
+  ],
+  "author": "Shakeel Mohamed",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shakeelmohamed/Nope.js/issues"
+  },
+  "engine": {
+    "node": "0.10.x"
+  }
+}
