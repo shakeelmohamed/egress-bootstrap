@@ -114,7 +114,7 @@ describe("Login form:", function(){
                 });
             });
         });
-    });    
+    });
 });
 
 describe("Test user:", function(){

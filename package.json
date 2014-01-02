@@ -12,7 +12,9 @@
   "devDependencies": {
     "jshint": "0.5.x",
     "mocha": "1.16.x",
-    "zombie": "2.0.0-alpha24"
+    "zombie": "2.0.0-alpha24",
+    "grunt": "~0.4.2",
+    "grunt-contrib-jshint": "~0.6.3"
   },
   "jshintConfig": {
     "curly": true,
