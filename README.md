@@ -1,4 +1,4 @@
-Nope.js
+nope.js
 ====
 
 Build Status:
@@ -21,7 +21,7 @@ Build Status:
     </tr>
 </table>
 
-NOPE is an acronym:
+nope is an acronym:
 * Node.js
 * Organized
 * PostgreSQL
