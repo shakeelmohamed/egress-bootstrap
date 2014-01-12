@@ -7,8 +7,8 @@ exports.init = function (app) {
     function getViewData (title, pathSuffix, userID, message) {
         // Set app.locals in web.js; this function gets passed around to all controllers
         return {
-            sitename: app.locals.sitename,
-            author: app.locals.author,
+            siteName: app.locals.siteName,
+            author: app.locals.siteAuthor,
             title: title,
             loc: pathSuffix,
             user: userID,

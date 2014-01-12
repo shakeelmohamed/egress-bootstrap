@@ -6,10 +6,7 @@ var express = require("express"),
 var app = module.exports = express();
 
 app.configure(function () {
-    app.locals({
-        sitename: "Nope.js",
-        author: "Shakeel Mohamed"
-    });
+    app.locals(require("./config"));
     app.locals.pretty = true;
     app.set("views", __dirname + "/jade");
     app.set("view engine", "jade");
