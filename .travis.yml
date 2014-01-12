@@ -6,7 +6,7 @@ services: PostgreSQL
 env:
   DATABASE_URL: postgres://postgres:@127.0.0.1/nopejs_test
 before_script:
-- sudo apt-get install python-software-properties=0.92.27 -m
+- sudo apt-get install python-software-properties -m
 - sudo add-apt-repository ppa:chris-lea/node.js -y
 - npm install zombie
 - npm ls
