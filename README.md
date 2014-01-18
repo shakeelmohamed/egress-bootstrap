@@ -1,7 +1,7 @@
-Nope.js
+Egress
 ====
 
-Build Status:
+## Build Status:
 <table>
     <tr>
         <th>Branch</th>
@@ -10,24 +10,21 @@ Build Status:
     <tr>
         <td>Master</td>
         <td>
-            <img src="https://travis-ci.org/shakeelmohamed/Nope.js.png?branch=master" />
+            <img src="https://travis-ci.org/shakeelmohamed/egress.png?branch=master" />
         </td>
     </tr>
     <tr>
         <td>Develop</td>
         <td>
-            <img src="https://travis-ci.org/shakeelmohamed/Nope.js.png?branch=develop" />
+            <img src="https://travis-ci.org/shakeelmohamed/egress.png?branch=develop" />
         </td>
     </tr>
 </table>
 
-NOPE is an acronym:
-* Node.js
-* Organized
-* PostgreSQL
-* Experience
+## Egress (v.) - to go out; emerge.
 
-It's a minimal user account login system built with PostgreSQL support.
+Egress is a minimal [Express](http://expressjs.com/) app template for a user account system.
+I built this with the intention of getting node.js apps scaffolded out quickly.
 
 ## Setup
 
