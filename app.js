@@ -13,7 +13,7 @@ app.configure(function () {
     app.use(express.urlencoded());
     app.use(express.json());
     app.use(express.cookieParser());
-    app.use(express.session({ secret: "Nope.js"}));
+    app.use(express.session({ secret: "egress-secret-goes-right-here-now"}));
     app.use(express.static(__dirname + "/public"));
     app.use(app.router);
     app.use(function(req, res){

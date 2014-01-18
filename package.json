@@ -1,7 +1,7 @@
 {
-  "name": "nope.js",
+  "name": "egress",
   "version": "0.0.1",
-  "description": "A minimal user account login system built for a PostgreSQL back-end",
+  "description": "A minimal Express app template for a user account system.",
   "main": "web.js",
   "dependencies": {
     "bcrypt-nodejs": "0.x.3",
@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/shakeelmohamed/Nope.js"
+    "url": "https://github.com/shakeelmohamed/egress"
   },
   "scripts": {
     "test": "mocha test/index.js"
@@ -37,12 +37,13 @@
     "minimal",
     "user",
     "account",
-    "system"
+    "system",
+    "egress"
   ],
   "author": "Shakeel Mohamed",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/shakeelmohamed/Nope.js/issues"
+    "url": "https://github.com/shakeelmohamed/egress/issues"
   },
   "engine": {
     "node": "0.10.x"
