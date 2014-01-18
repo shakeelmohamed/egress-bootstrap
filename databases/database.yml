@@ -1,5 +1,5 @@
 test:
     adapter: postgresql
-    database: nopejs_test
+    database: egress_test
     username: postgres
     password: 

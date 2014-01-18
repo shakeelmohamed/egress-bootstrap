@@ -4,18 +4,18 @@ notifications:
   email: false
 services: PostgreSQL
 env:
-  DATABASE_URL: postgres://postgres:@127.0.0.1/nopejs_test
+  DATABASE_URL: postgres://postgres:@127.0.0.1/egress_test
 before_script:
 - sudo apt-get install python-software-properties=0.82.7.5 -m
 - sudo add-apt-repository ppa:chris-lea/node.js -y
 - npm install zombie
 - npm ls
-- psql -c 'create database nopejs_test;' -U postgres
-- psql -f databases/users.sql -U postgres -d nopejs_test
+- psql -c 'create database egress_test;' -U postgres
+- psql -f databases/users.sql -U postgres -d egress_test
 deploy:
   provider: heroku
   api_key:
     secure: Zs4H1X5yvsZ4RDS1Y7x58YZbuSwdp16WdoOgVjAHXkM8nQCLJEOEyx3/yTuztMK4w3f9WPWFed1JfQKPPKJx19fbn7QPMnMdZ3vDKKs8HYQ6fa7PNcNob9t8EMyQ/9Cgt0l/pFqkMO0OmSeELFDWsmC4VAoZRSlmXHzrSqlMYPw=
   app:
-    master: nopejs
-    develop: nopejs-dev
+    master: egress
+    develop: egress-dev
