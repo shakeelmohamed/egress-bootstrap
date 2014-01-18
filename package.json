@@ -4,7 +4,7 @@
   "description": "A minimal Express app template for a user account system.",
   "main": "web.js",
   "dependencies": {
-    "bcrypt-nodejs": "0.x.3",
+    "bcrypt-nodejs": "0.0.3",
     "express": "3.x",
     "jade": "0.35.0",
     "pg": "2.x"
@@ -40,7 +40,11 @@
     "system",
     "egress"
   ],
-  "author": "Shakeel Mohamed",
+  "author": {
+    "name": "Shakeel Mohamed",
+    "email": "Contact@ShakeelMohamed.com",
+    "url": "https://github.com/shakeelmohamed"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/shakeelmohamed/egress/issues"
