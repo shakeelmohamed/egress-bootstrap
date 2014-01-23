@@ -4,7 +4,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: packageFile,
         jshint: {
-            all: ["Gruntfile.js", "app.js", "index.js", "controllers/*.js", "routes/*.js", "test/*.js"],
+            all: ["Gruntfile.js", "app.js", "config.js", "index.js", "controllers/*.js", "routes/*.js", "test/*.js"],
             options: packageFile.jshintConfig
         }
     });
