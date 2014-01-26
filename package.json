@@ -32,10 +32,10 @@
     "test": "mocha test/index.js"
   },
   "keywords": [
-    "Postgres",
-    "PostgreSQL",
+    "postgres",
+    "postgresql",
     "express",
-    "expressJS",
+    "expressjs",
     "minimal",
     "user",
     "account",
