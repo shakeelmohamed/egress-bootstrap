@@ -1,6 +1,6 @@
 {
   "name": "egress",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "description": "A minimal Express app template for a user account system.",
   "main": "web.js",
   "dependencies": {
@@ -32,10 +32,10 @@
     "test": "mocha test/index.js"
   },
   "keywords": [
-    "Postgres",
-    "PostgreSQL",
+    "postgres",
+    "postgresql",
     "express",
-    "expressJS",
+    "expressjs",
     "minimal",
     "user",
     "account",
