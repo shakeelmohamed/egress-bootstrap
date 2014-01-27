@@ -1,7 +1,4 @@
-var bcrypt =  require("bcrypt-nodejs");
-var assert = require("assert");
-
-module.exports = function(testuser){
+module.exports = function(testuser, bcrypt, assert){
     describe("Bcrypt", function(){
         describe("Test user's password", function() {
             it("should match the encrypted password", function() {
