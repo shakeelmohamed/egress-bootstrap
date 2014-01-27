@@ -12,13 +12,7 @@ browser.site = "http://localhost:"+port;
 
 var testuser = {username: "hehehahahoho00001234", email: "nowayjose@donteventhinkaboutit.com", password: "imjustalittletestuser"};
 
-describe("Bcrypt", function(){
-    describe("Test user's password", function() {
-        it("should match the encrypted password", function() {
-            assert( bcrypt.compareSync(testuser.password, bcrypt.hashSync(testuser.password)) );
-        });
-    });
-});
+require("./bcrypt.js")(testuser);
 
 describe("PostgreSQL", function(){
     describe("credentials", function() {
