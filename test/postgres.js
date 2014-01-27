@@ -1,4 +1,4 @@
-module.exports = function(testuser, pg, assert){
+module.exports = function(assert, testuser, pg){
     describe("PostgreSQL", function(){
         describe("credentials", function() {
             it("should connect to a database, and query the version", function(done) {

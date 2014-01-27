@@ -1,4 +1,4 @@
-module.exports = function(testuser, pg, assert){
+module.exports = function(assert, testuser, pg){
     describe("Cleanup", function(){
         it("test user should be deleted from the PostgreSQL database", function(done) {
             pg.connect(process.env.DATABASE_URL, function (err, client) {

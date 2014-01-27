@@ -1,4 +1,4 @@
-module.exports = function(testuser, bcrypt, assert){
+module.exports = function(assert, testuser, bcrypt){
     describe("Bcrypt", function(){
         describe("Test user's password", function() {
             it("should match the encrypted password", function() {

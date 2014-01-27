@@ -1,4 +1,4 @@
-module.exports = function(testuser, app, browser, assert){
+module.exports = function(assert, testuser, app, browser){
     describe("Login form:", function(){
         describe("elements", function(){
             it("should match what is expected", function(done) {

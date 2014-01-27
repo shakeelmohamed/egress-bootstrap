@@ -1,4 +1,4 @@
-module.exports = function(testuser, browser, assert){
+module.exports = function(assert, testuser, browser){
     describe("Logout:", function(){
         describe("script", function(){
             it("should logout the test user", function(done){
