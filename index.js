@@ -9,7 +9,7 @@ pg.connect(process.env.DATABASE_URL, function (err, client) {
         return console.error("could not connect to postgres", err);
     }
     //TODO: handle registration process, sanitize before doing the insert.
-    //TODO: insert query must be run asynch, to get the callback for errors like non-unique values, etc.
+    //TODO: insert query must be run async, to get the callback for errors like non-unique values, etc.
     
     var checkTableQuery = "select * from information_schema.tables where table_name='users'";
 

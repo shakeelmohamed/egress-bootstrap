@@ -8,5 +8,6 @@ module.exports = function(grunt) {
             options: packageFile.jshintConfig
         }
     });
+    
     grunt.loadNpmTasks("grunt-contrib-jshint");
 };

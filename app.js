@@ -6,7 +6,7 @@ var express = require("express"),
 var app = module.exports = express();
 
 app.configure(function () {
-    app.locals(require("./config"));
+    app.locals(require("./config")); // Get site configuration from config.js
     app.locals.pretty = true;
     app.set("views", __dirname + "/jade");
     app.set("view engine", "jade");
