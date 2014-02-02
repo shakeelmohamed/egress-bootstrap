@@ -4,5 +4,4 @@ npm-debug.log
 jade/*.html
 jade/includes/*.html
 all
-_temp/*
 temp/*
