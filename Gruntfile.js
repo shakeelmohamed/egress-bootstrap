@@ -16,7 +16,10 @@ module.exports = function(grunt) {
             options: packageFile.jshintConfig
         },
         jade: {
-            all: ["jade/*.jade", "jade/includes/*.jade"]
+            "_temp/jade": ["jade/*.jade", "jade/includes/*.jade"],
+            options: {
+                debug: false
+            }
         }
     });
     
