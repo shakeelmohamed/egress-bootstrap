@@ -1,7 +1,7 @@
-var express = require("express"),
-    jade = require("jade"),
-    pg = require("pg"),
-    routes = require("./routes");
+var express = require("express");
+var jade = require("jade");
+var pg = require("pg");
+var routes = require("./routes");
 
 var app = module.exports = express();
 
