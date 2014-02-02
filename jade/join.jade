@@ -1,13 +1,13 @@
 include includes/head
 script.
-    var msg = '!{msg}';
+    //var msg = '!{msg}';
 
 body
     include includes/nav
     .container
         .row.text-center.egress-template
             h2 Join #{siteName}
-            - if(msg)
+            if msg
                 div.alert.alert-danger
                     strong #{msg}
             form.col-xs-4.col-md-offset-4(method="post" action="/join" name="entry_form")
