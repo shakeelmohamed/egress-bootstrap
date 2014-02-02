@@ -14,7 +14,8 @@
     "mocha": "1.16.x",
     "zombie": "2.0.0-alpha24",
     "grunt": "~0.4.2",
-    "grunt-contrib-jshint": "~0.6.3"
+    "grunt-contrib-jshint": "~0.6.3",
+    "grunt-contrib-jade": "~0.9.1"
   },
   "jshintConfig": {
     "curly": true,

@@ -9,13 +9,13 @@
         .collapse.navbar-collapse
             ul.nav.navbar-nav
                 // For the actual navigation items, follow the format of {'url': 'visiblename' }
-                for navItem, path in {'': 'Home'}
+                for navItem, path in {"": "Home"}
                     if path === loc
                         li.active
-                            a(href= '/' + path)= navItem
+                            a(href= "/" + path)= navItem
                     else
                         li
-                            a(href= '/' + path)= navItem
+                            a(href= "/" + path)= navItem
             
             ul.nav.navbar-nav.navbar-right
                 if user

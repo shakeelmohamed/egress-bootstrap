@@ -1,6 +1,5 @@
 (function(){
     module.exports = function(getViewData, validators) {
-        validators
         return {
             get: function(req, res) {
                 if (req.session.userID) {
