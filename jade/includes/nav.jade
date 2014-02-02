@@ -16,14 +16,15 @@
                     else
                         li
                             a(href= '/' + path)= navItem
-                li
-                    if user
-                        a(href="/logout") Logout
-                    else
-                        a(href="/join") Join
+            
             ul.nav.navbar-nav.navbar-right
-                li
-                    if user
+                if user
+                    li
                         a Hello, #{user}
-                    else
+                    li
+                        a(href="/logout") Logout
+                else
+                    li
                         a(href="/login") Login
+                    li
+                        a(href="/join") Join
