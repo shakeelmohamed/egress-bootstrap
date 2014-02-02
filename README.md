@@ -1,7 +1,6 @@
-Egress
+Egress (v.) - to go out; emerge.
 ====
 
-## Build Status:
 <table>
     <tr>
         <th>Branch</th>
@@ -20,8 +19,6 @@ Egress
         </td>
     </tr>
 </table>
-
-## Egress (v.) - to go out; emerge.
 
 Egress is a minimal [Express](http://expressjs.com/) app template for a user account system.
 I built this with the intention of getting user-based node.js apps scaffolded out quickly.
@@ -47,14 +44,18 @@ PGSSLMODE=require
 ```
 
 This will allow your application to connect to your database
+
 3. Modify the `config` object in `config.js`
 4. Running `foreman start` will process the `DATABASE_URL` and `PGSSLMODE` values, locally
 
 ### Deploying to Heroku:
 
 1. Authenticate via the Heroku command line, `heroku login`
-2. Execute `heroku config:set DATABASE_URL=postgres://<username>:<password>@<host>:<port>/<dbname>`
-3. Execute `heroku config:set PGSSLMODE=require`
+2. Set your environment variables on Heroku
+    * If you're already setup you `.env` file as documented above, simply execute `heroku config:push`
+    * Otherwise you can execute
+        1. Execute `heroku config:set DATABASE_URL=postgres://<username>:<password>@<host>:<port>/<dbname>`
+        2. Execute `heroku config:set PGSSLMODE=require`
 4. Modify the `config` object in `config.js`
 5. Push your code up to your Heroku app, done
 
