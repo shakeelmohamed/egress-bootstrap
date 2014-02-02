@@ -27,8 +27,9 @@
                         }
                         if(post.register == "register")
                         {
-                            //TODO: handle registration process, sanitize before doing the insert.
-                            //TODO: insert query must be run asynch, to get the callback for errors like non-unique values, etc.
+                            //TODO: sanitize before doing the insert
+                            // Handle registration process,
+                            //Insert query must be run asynch, to get the callback for errors like non-unique values, etc.
                             client.query("insert into users (userid, username, email, secret) values (DEFAULT, '"+post.user+"', '"+post.email+"', '"+bcrypt.hashSync(post.password)+"')", function (err, result) {
                                 if (err || (!post.user || !post.email || !post.password)) {
                                     console.log("ERROR ON REGISTRATION:", err);

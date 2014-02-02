@@ -59,8 +59,15 @@ This will allow your application to connect to your database
 4. Modify the `config` object in `config.js`
 5. Push your code up to your Heroku app, done
 
-* If using anything else
-    * Submit an issue
+### If using anything else
+
+* Submit an issue
+
+## Modifying site content
+
+* See the `jade` directory for various markup files used to create the web views.
+* See the `controllers` directory for specific functionality for each views, along with the files in `routes` for how they're invoked.
+* Add additional frontend assets to the `public` directory, then reference them in the files found in `jade/includes`, particularly `head.jade` and `scripts.jade`
 
 ## Running the tests
 
@@ -69,6 +76,13 @@ This will allow your application to connect to your database
     * execute `foreman run npm test` from the root directory of this repository
 * Else
     * Submit an issue
+
+## Currently problems (marked with a TODO)
+
+* There is no significant input validation in place. I'm planning to implement [validator.js](https://github.com/chriso/validator.js). This is necessary for:
+    * Security issues
+    * Password requirements
+* There is no protection against SQL injection, which is a huge security concern. This might be addressed as a byproduct of adding input validation.
 
 # Dependencies
 

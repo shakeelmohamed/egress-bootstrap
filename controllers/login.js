@@ -4,7 +4,6 @@
             get: function(req, res) {
                 if (req.session.userID) {
                     //Send user to the account page if they're authorized
-                    //TODO: make this a middleware function for code reuse
                     res.redirect("account");
                 }
                 else {
