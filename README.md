@@ -25,19 +25,21 @@ Egress
 
 Egress is a minimal [Express](http://expressjs.com/) app template for a user account system.
 I built this with the intention of getting user-based node.js apps scaffolded out quickly.
+The backend is implemented using PostgreSQL.
 
 ## Installing
 
-* This package was not meant to be installed over npm.
-    * But, you can run `npm install egress`, then copy the contents of the `node_modules/egress` folder to the root of your project directory and follow the steps below.
+* This package was not meant to be installed over npm
+    * But, you can run `npm install egress`, then copy the contents of the `node_modules/egress` folder to the root of your project directory and follow the steps below
     * Or, you can clone this project in the root of your project directory by executing `git clone git@github.com/shakeelmohamed/egress.git`
+* You probably don't need to declare this as a dependency in your `package.json`
 
-## Setup
+## Usage
 
 ### Development with Foreman:
 
 1. Create a `.env` file in the root directory of this project
-2. In your `.env` file add your PostgreSQL connection string in the following format:
+2. Your `.env` file should contain your PostgreSQL connection string in the following format, along with setting the `PGSSLMODE` variable to `require`:
 
 ```
 DATABASE_URL=postgres://<username>:<password>@<host>:<port>/<dbname>
@@ -67,10 +69,16 @@ This will allow your application to connect to your database
 * Else
     * Submit an issue
 
+# Dependencies
+
+* [Bootstrap v3.0.0](https://github.com/twbs/bootstrap/releases/tag/v3.0.0)
+* [PostgreSQL](http://www.postgresql.org/)
+* For other dependencies see `package.json`
+
 # Contact
 
 You can most easily reach me on twitter [@_Shakeel](http://twitter.com/_Shakeel)
 
 # License
 
-This project is licensed under the terms of [the MIT license](LICENSE).
+This project is licensed under the terms of [the MIT license](LICENSE)
