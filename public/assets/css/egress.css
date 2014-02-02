@@ -10,3 +10,14 @@ ul.nav.navbar-nav li a {
 .navbar-inverse .navbar-brand {
     color: whitesmoke;
 }
+.centered-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+.centered-form input {
+    margin-bottom: 10px;
+}
+.big-button {
+    width: 150px;
+    max-width: 150px;
+}

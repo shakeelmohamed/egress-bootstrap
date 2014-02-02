@@ -3,19 +3,15 @@ include includes/head
 body
     include includes/nav
     .container
-        .row.text-center.egress-template
-            h2 Join #{siteName}
+        .span12.text-center.egress-template
+            h1 Join #{siteName}
             if msg
                 div.alert.alert-danger
                     strong #{msg}
-            form.col-xs-4.col-md-offset-4(method="post" action="/join" name="entry_form")
-                p
-                    input(type="text" class="form-control" name="user" id="user" placeholder="Username")
-                p
-                    input(type="text" class="form-control" name="email" id="email" placeholder="Email")
-                p
-                    input(type="password" class="form-control" name="password" id="password" placeholder="Password")
-                p
-                    button(type="submit" class="btn btn-primary btn btn-info" name="register" id="register" value="register") Join
+            form.form-horizontal.centered-form(method="post" action="/join" name="entry_form")
+                input#user.form-control.input-lg(type="text" name="user" placeholder="Username")
+                input#email.form-control.input-lg(type="text" name="email" placeholder="Email")
+                input#password.form-control.input-lg(type="password" name="password" placeholder="Password")
+                button#register.btn.btn-info.btn-lg.big-button(type="submit" name="register" value="register") Join
     
 include includes/scripts

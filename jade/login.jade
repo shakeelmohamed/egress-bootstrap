@@ -3,17 +3,14 @@ include includes/head
 body
     include includes/nav
     .container
-        .row.text-center.egress-template
-            h2 Login to #{siteName}
+        .span12.text-center.egress-template
+            h1 Login to #{siteName}
             if msg
                 div.alert.alert-danger 
                     strong #{msg}
-            form.col-xs-4.col-md-offset-4(method="post" action="/login" name="entry_form")
-                p
-                    input(type="text" class="form-control" name="user" id="user" placeholder="Username")
-                p
-                    input(type="password" class="form-control" name="password" id="password" placeholder="Password")
-                p
-                    button(type="submit" class="btn btn-primary btn btn-info" id="login" name="login" value="login") Login
+            form.form-horizontal.centered-form(method="post" action="/login" name="entry_form")
+                input#user.form-control.input-lg(type="text" name="user" placeholder="Username")
+                input#password.form-control.input-lg(type="password" name="password" placeholder="Password")
+                button#login.btn.btn-info.btn-lg.big-button(type="submit" name="login" value="login") Login
 
 include includes/scripts

@@ -4,7 +4,7 @@ module.exports = function(assert, testuser, app, browser){
             it("should match what is expected", function(done) {
                 browser.visit("/join")
                 .then(function() {
-                    assert.equal(browser.text("h2"), "Join "+app.locals.siteName);
+                    assert.equal(browser.text("h1"), "Join "+app.locals.siteName);
                     assert.ok(browser.query("#user"), "Couldn't find user field.");
                     assert.ok(browser.query("#email"), "Couldn't find email field.");
                     assert.ok(browser.query("#password"), "Couldn't find password field.");
