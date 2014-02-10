@@ -8,9 +8,7 @@ body
             if msg
                 div.alert.alert-danger 
                     strong #{msg}
-            form.form-horizontal.centered-form(method="post" action="/login" name="entry_form")
-                input#user.form-control.input-lg(type="text" name="user" placeholder="Username")
-                input#password.form-control.input-lg(type="password" name="password" placeholder="Password")
-                button#login.btn.btn-info.btn-lg.big-button(type="submit" name="login" value="login") Login
+            
+            include forms/Login
 
 include includes/scripts
