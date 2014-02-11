@@ -4,7 +4,12 @@ var url = require("url");
 function getDictOfEnvVars(filepath) {
     if(!fs.existsSync(filepath)) {
         console.log("ERROR", filepath, "not found");
-        return {};
+        var config = {};
+        //This should only happen on Travis CI
+        if(process.env.DATABASE_URL) {
+            config.postgres = process.env.DATABASE_URL;
+        }
+        return config;
     }
     var fileOfVariable = fs.readFileSync(filepath, "utf8").split("\n");
     var envsDict = {};
