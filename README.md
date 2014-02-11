@@ -1,6 +1,8 @@
 Egress (v.) - to go out; emerge.
 ====
 
+# Start writing a web app already.
+
 <table>
     <tr>
         <th>Branch</th>

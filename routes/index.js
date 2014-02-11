@@ -3,12 +3,13 @@ exports.init = function (app) {
     var jade = require("jade");
     var pg = require("pg");
 
+    var config = require("../config");
     var controllerSet = require("../controllers");
     var utils = require("./utils")(app);
     var validators = require("./validators");
 
     //Lovely controller routing
-    var controllers = new controllerSet(utils.getViewData, validators);
+    var controllers = new controllerSet(utils.getViewData, validators, config);
 
     app.get("/", controllers.home.get);
 
