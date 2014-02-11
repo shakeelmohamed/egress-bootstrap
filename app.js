@@ -1,11 +1,10 @@
-//var async = require("async");
 var express = require("express");
 var jade = require("jade");
 var pg = require("pg");
 
 var routes = require("./routes");
 var config = require("./config");
-var app = express();//= module.exports = express();
+var app = express();
 
 app.configure(function () {
     app.locals(config); // Get site configuration from config.js
@@ -25,6 +24,7 @@ app.configure(function () {
 
 routes.init(app);
 
+//Before starting the app, see if the users table exists. If not, create it.
 pg.connect(config.postgres, function (err, client) {
     if (err) {
         return console.error("could not connect to postgres", err);
