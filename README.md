@@ -1,7 +1,9 @@
-Egress (v.) - to go out; emerge.
+Egress: start writing a web app already.
 ====
 
-# Start writing a web app already.
+Egress is a minimal [Express](http://expressjs.com/) app template for a user account system.
+I built this with the intention of getting user-based node.js apps scaffolded out quickly.
+The backend is implemented using PostgreSQL.
 
 <table>
     <tr>
@@ -22,18 +24,13 @@ Egress (v.) - to go out; emerge.
     </tr>
 </table>
 
-Egress is a minimal [Express](http://expressjs.com/) app template for a user account system.
-I built this with the intention of getting user-based node.js apps scaffolded out quickly.
-The backend is implemented using PostgreSQL.
-
-## Installing
-
+## Usage
+* The best way to use Egress is by using the [Yeoman generator](http://github.com/shakeelmohamed/generator-egress)
 * This package was not meant to be installed over npm
     * But, you can run `npm install egress`, then copy the contents of the `node_modules/egress` folder to the root of your project directory and follow the steps below
     * Or, you can clone this project in the root of your project directory by executing `git clone git@github.com/shakeelmohamed/egress.git`
-* You probably don't need to declare this as a dependency in your `package.json`
+* You don't need to declare this package as a dependency in your project's `package.json` file.
 
-## Usage
 
 ### Development with Foreman:
 
@@ -76,8 +73,8 @@ This will allow your application to connect to your database
 * Make sure your environment is setup to run [Zombie.js](http://zombie.labnotes.org/#Infection)
 * With foreman
     * execute `foreman run npm test` from the root directory of this repository
-* Else
-    * Submit an issue
+* Without foreman
+    * execute `npm test`
 
 ## Currently problems (marked with a TODO)
 
