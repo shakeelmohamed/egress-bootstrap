@@ -2,6 +2,10 @@ var fs = require("fs");
 var url = require("url");
 
 function getDictOfEnvVars(filepath) {
+    if(!fs.existsSync(filepath)) {
+        console.log("ERROR", filepath, "not found");
+        return {};
+    }
     var fileOfVariable = fs.readFileSync(filepath, "utf8").split("\n");
     var envsDict = {};
     fileOfVariable.forEach(function(variable){
