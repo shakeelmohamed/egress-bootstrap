@@ -31,5 +31,6 @@ var config = getDictOfEnvVars(".env");
 config.siteName = "Egress";
 config.siteAuthor = "Shakeel Mohamed";
 config.siteDescription = "Egress, start writing a web app already.";
+config.port = 5000;
 
 module.exports = config;

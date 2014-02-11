@@ -53,7 +53,9 @@ pg.connect(config.postgres, function (err, client) {
     });
 });
 
-var port = process.env.PORT || 5000;
+module.exports = app;
+
+var port = process.env.PORT || config.port;
 app.listen(port, function() {
     console.log("Listening on " + port);
 });

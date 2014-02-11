@@ -1,6 +1,6 @@
 (function(){
     //Here we're exporting an object constructor
-    module.exports = function ControllerSet(getViewData, validators) {
+    module.exports = function ControllerSet(getViewData, validators, config) {
         // Get a list of all files in the controllers folder
         var controllers = require("fs").readdirSync(__dirname);
 
@@ -12,7 +12,7 @@
             }
             
             //ex: this["home"] = require("./home.js")(getViewData, validators);
-            this[name] = require("./"+name)(getViewData, validators);
+            this[name] = require("./"+name)(getViewData, validators, config);
         }
     };
 })();

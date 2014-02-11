@@ -1,5 +1,5 @@
 (function(){
-    module.exports = function(getViewData, validators) {
+    module.exports = function(getViewData, validators, config) {
         return {
             get: function(req, res) {
                 if (req.session.userID) {
@@ -21,7 +21,7 @@
                     res.render("join", getViewData("Join", "join", req.session.userID, "Error: user registration failed"));
                 }
                 else {
-                    pg.connect(process.env.DATABASE_URL, function (err, client) {
+                    pg.connect(config.postgres, function (err, client) {
                         if (err) {
                             return console.error("could not connect to postgres", err);
                         }
