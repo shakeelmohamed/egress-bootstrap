@@ -6,8 +6,9 @@ function getDictOfEnvVars(filepath) {
     var envsDict = {};
     fileOfVariable.forEach(function(variable){
         var v = variable.split("=");
-        if(v && v.length==2 && v[0] && v[1])
+        if(v && v.length==2 && v[0] && v[1]) {
             envsDict[v[0].replace(" ", "")] = v[1];
+        }
     });
     var parsedPostgresURL = url.parse(envsDict.DATABASE_URL);
 
@@ -17,11 +18,12 @@ function getDictOfEnvVars(filepath) {
     envsDict.postgres.password = auth[1];
 
     envsDict.postgres.database = parsedPostgresURL.path.replace("/", "");
-    envsDict.postgres.port = parseInt(parsedPostgresURL.port);
+    envsDict.postgres.port = parseInt(parsedPostgresURL.port, 10); //Base 10
     envsDict.postgres.host = parsedPostgresURL.hostname;
 
-    if(!envsDict.PGSSLMODE || envsDict.PGSSLMODE != false)
+    if(!envsDict.PGSSLMODE || envsDict.PGSSLMODE !== "false") {
         envsDict.postgres.ssl = true;
+    }
     return envsDict;
 }
 
