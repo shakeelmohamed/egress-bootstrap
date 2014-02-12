@@ -58,9 +58,9 @@ This will allow your application to connect to your database
 4. Modify the `config` object in `config.js`
 5. Push your code up to your Heroku app, done
 
-### If using anything else
+### Deploying elsewhere
 
-* Submit an issue
+* Submit a pull request
 
 ## Modifying site content
 
@@ -76,7 +76,11 @@ This will allow your application to connect to your database
 * Without foreman
     * execute `npm test`
 
-## Currently problems (marked with a TODO)
+## Validating JS and Jade files
+
+* Run `grunt`
+
+## Current problems (marked with a TODO)
 
 * There is no significant input validation in place. I'm planning to implement [validator.js](https://github.com/chriso/validator.js). This is necessary for:
     * Security issues
@@ -87,7 +91,11 @@ This will allow your application to connect to your database
 
 * [Bootstrap v3.0.0](https://github.com/twbs/bootstrap/releases/tag/v3.0.0)
 * [PostgreSQL](http://www.postgresql.org/)
-* For other dependencies see `package.json`
+* For other dependencies see [package.json](package.json)
+
+# Issues
+
+* When in doubt, create an issue and I'll probably respond within 24 hours.
 
 # Contact
 
