@@ -34,15 +34,16 @@
         "test": "mocha test/index.js"
     },
     "keywords": [
+        "account",
+        "egress",
+        "express",
+        "minimal",
         "postgres",
         "postgresql",
-        "express",
-        "expressjs",
-        "minimal",
-        "user",
-        "account",
+        "scaffold",
         "system",
-        "egress"
+        "user",
+        "webapp"
     ],
     "author": {
         "name": "Shakeel Mohamed",
