@@ -1,10 +1,11 @@
-include includes/head
+doctype html
+html(lang="en")
+    include includes/head
+    body
+        include includes/nav
+        .container
+            .row.text-center.egress-template
+                h1 Account
+                h4 Welcome to your account, #{user}
 
-body
-    include includes/nav
-    .container
-        .row.text-center.egress-template
-            h1 Account
-            h4 Welcome to your account, #{user}
-
-include includes/scripts
+        include includes/scripts

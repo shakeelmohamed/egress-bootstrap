@@ -1,13 +1,14 @@
-include includes/head
-
-body
-    include includes/nav
-    .container
-        .span12.text-center.egress-template
-            h1 Join #{siteName}
-            if msg
-                div.alert.alert-danger#error #{msg}
-            
-            include forms/join
-
-include includes/scripts
+doctype html
+html(lang="en")
+    include includes/head
+    body
+        include includes/nav
+        .container
+            .span12.text-center.egress-template
+                h1 Join #{siteName}
+                if msg
+                    div.alert.alert-danger#error #{msg}
+                
+                include forms/join
+        
+        include includes/scripts
