@@ -6,8 +6,7 @@ body
         .span12.text-center.egress-template
             h1 Login to #{siteName}
             if msg
-                div.alert.alert-danger 
-                    strong #{msg}
+                div.alert.alert-danger#error #{msg}
             
             include forms/login
 

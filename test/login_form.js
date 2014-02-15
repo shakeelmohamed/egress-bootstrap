@@ -12,7 +12,7 @@ module.exports = function(assert, testuser, app, browser){
                 .then(done);
             });
         });
-
+        
         describe("script", function(){
             it("should login as a user", function(done) {
                 browser.visit("/login", function(){
@@ -20,6 +20,25 @@ module.exports = function(assert, testuser, app, browser){
                     browser.fill("password", testuser.password);
                     browser.pressButton("login", function() {
                         assert.ok(browser.success);
+                        assert.ok(!browser.text("#error"), browser.text("#error"));
+                        done();
+                    });
+                });
+            });
+            it("should logout the test user", function(done){
+                browser.visit("/logout", function(){
+                    assert.ok(browser.success);
+                    done();
+                    //At this point the user will have been logged out, and redirected to /login
+                });
+            });
+            it("should login as a user, using email", function(done) {
+                browser.visit("/login", function(){
+                    browser.fill("user", testuser.email);
+                    browser.fill("password", testuser.password);
+                    browser.pressButton("login", function() {
+                        assert.ok(browser.success);
+                        assert.ok(!browser.text("#error"), browser.text("#error"));
                         done();
                     });
                 });

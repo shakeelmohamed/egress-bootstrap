@@ -21,6 +21,7 @@ module.exports = function(assert, testuser, app, browser){
                     browser.fill("password", testuser.password);
                     browser.pressButton("register", function() {
                         assert.ok(browser.success);
+                        assert.ok(!browser.query("#error"), browser.text("#error"));
                         done();
                     });
                     //At this point the user will have been logged in, and redirected to /account

@@ -21,3 +21,7 @@ ul.nav.navbar-nav li a {
     width: 150px;
     max-width: 150px;
 }
+
+#error {
+    font-weight: bold;
+}

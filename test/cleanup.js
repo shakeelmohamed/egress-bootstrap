@@ -15,6 +15,7 @@ module.exports = function(assert, testuser, pg, config){
                         else {
                             assert.equal(true, !!result, "Result object invalid.");
                             assert.equal(1 , result.rowCount, "Test user not found in database.");
+                            console.log("Test user successfully deleted from database.");
                             done();
                         }
                     });
