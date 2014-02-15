@@ -8,7 +8,8 @@
         "bcrypt-nodejs": "0.0.3",
         "express": "3.x",
         "jade": "0.35.0",
-        "pg": "2.x"
+        "pg": "2.x",
+        "validator": "3.x"
     },
     "devDependencies": {
         "jshint": "0.5.x",
