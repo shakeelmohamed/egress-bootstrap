@@ -1,8 +1,4 @@
 exports.init = function (app) {
-    var bcrypt = require("bcrypt-nodejs");
-    var jade = require("jade");
-    var pg = require("pg");
-
     var config = require("../config");
     var controllerSet = require("../controllers");
     var utils = require("./utils")(app);

@@ -1,6 +1,7 @@
 var express = require("express");
+var fs = require("fs");
 var jade = require("jade");
-var pg = require("pg");
+var db = require("./p");
 
 var routes = require("./routes");
 var config = require("./config");
@@ -24,33 +25,27 @@ app.configure(function () {
 
 routes.init(app);
 
-//Before starting the app, see if the users table exists. If not, create it.
-pg.connect(config.postgres, function (err, client) {
-    if (err) {
-        return console.error("could not connect to postgres", err);
+var checkTableQuery = "select * from information_schema.tables where table_name='users'";
+
+db.connect();
+db.query(checkTableQuery, function(err, result) {
+    if (err || result.rowCount === 0) {
+        console.log("The users table doesn't exist.");
+        var createSQL = fs.readFileSync("databases/users.sql", "utf8");
+        //db.connect();
+        db.query(createSQL, function(err, result) {
+            if (err) {
+                console.log("ERROR on creating users table:", err);
+            }
+            else {
+                console.log("Created the users table.");
+            }
+        });
     }
-    
-    var checkTableQuery = "select * from information_schema.tables where table_name='users'";
-
-    client.query(checkTableQuery, function (err, result){
-        if (err) {
-            console.log("The users table doesn't exist.", err);
-
-            var createSQL = fs.readFileSync("databases/users.sql", "utf8");
-
-            client.query(createSQL, function (err, result) {
-                if (err) {
-                    console.log("ERROR on creating users table:", err);
-                }
-                else {
-                    console.log("Created the users table.");
-                }
-            });
-        }
-        else {
-            console.log("The users table already exists.");
-        }
-    });
+    else {
+        console.log("The users table already exists.");
+    }
+    db.client.end();
 });
 
 module.exports = app;
