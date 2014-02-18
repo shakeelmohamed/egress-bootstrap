@@ -27,7 +27,7 @@
                         }
                         if (post.login == "login")
                         {
-                            client.query("SELECT * FROM users WHERE username='"+post.user+"' OR email='"+post.user+"' LIMIT 1", function (err, result) {
+                            client.query("SELECT * FROM users WHERE username=$1 OR email=$1 LIMIT 1", [post.user],function (err, result) {
                                 if (err || !result || !result.rows || result.rows.length === 0) {
                                     res.render("login", getViewData("Login", "login", req.session.userID, "Error: login failed"));
                                     client.end();

@@ -30,7 +30,7 @@
                             //TODO: sanitize before doing the insert
                             // Handle registration process,
                             //Insert query must be run asynch, to get the callback for errors like non-unique values, etc.
-                            client.query("insert into users (userid, username, email, secret) values (DEFAULT, '"+post.user+"', '"+post.email+"', '"+bcrypt.hashSync(post.password)+"')", function (err, result) {
+                            client.query("insert into users (userid, username, email, secret) values (DEFAULT, $1, $2, $3)", [post.user, post.email, bcrypt.hashSync(post.password)], function (err, result) {
                                 if (err || (!post.user || !post.email || !post.password)) {
                                     console.log("ERROR ON REGISTRATION:", err);
                                     res.render("join", getViewData("Join", "join", req.session.userID, "Error: user registration failed"));
