@@ -1,4 +1,5 @@
 var assert = require("assert");
+var async = require("async");
 var bcrypt = require("bcrypt-nodejs");
 var Browser = require("zombie");
 var mocha = require("mocha");
@@ -20,4 +21,4 @@ require("./postgres.js")(assert, testuser, pg, config);
 require("./join_form.js")(assert, testuser, app, browser);
 require("./logout.js")(assert, browser);
 require("./login_form.js")(assert, testuser, app, browser);
-require("./cleanup.js")(assert, testuser, pg, config);
+require("./cleanup.js")(assert, testuser, pg, async, config);
