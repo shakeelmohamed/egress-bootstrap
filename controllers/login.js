@@ -1,6 +1,6 @@
-module.exports = function(getViewData, validators, config){
+module.exports = function (getViewData, validators, config) {
     return {
-        get: function(req, res) {
+        get: function (req, res) {
             if (req.session.userID) {
                 //Send user to the account page if they're authorized
                 res.redirect("account");
@@ -9,7 +9,7 @@ module.exports = function(getViewData, validators, config){
                 res.render("login", getViewData("Login", "login"));
             }
         },
-        post: function(req, res) {
+        post: function (req, res) {
             var async = require("async");
             var bcrypt = require("bcrypt-nodejs");
             var pg = require("pg");

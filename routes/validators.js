@@ -8,7 +8,7 @@ module.exports = {
     },
     login: function (post) {
         // Define your custom input validation here
-        if(!post.user || !post.password) {
+        if (!post.user || !post.password) {
             return false;
         }
         return true;

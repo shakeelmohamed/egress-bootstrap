@@ -19,7 +19,7 @@ app.configure(function () {
     app.use(express.session({ secret: "egress-secret-goes-right-here-now"}));
     app.use(express.static(__dirname + "/public"));
     app.use(app.router);
-    app.use(function(req, res){
+    app.use(function (req, res) {
         res.redirect("/404");
     });
 });
@@ -29,15 +29,14 @@ pg.connect(config.postgres, function (err, client) {
         return console.error("could not connect to postgres", err);
     }
     
-    var checkTableQuery = "select * from information_schema.tables where table_name='users'";
-    var callbackCount = 0;
     async.waterfall([
-            function(callback){
+            function (callback) {
+                var callbackCount = 0;
                 ++callbackCount;
                 var checkTableQuery = "select * from information_schema.tables where table_name='users'";
                 client.query(checkTableQuery, callback);
             },
-            function(result, callback){
+            function (result, callback) {
                 ++callbackCount;
                 if (result.rowCount === 0) {
                     console.log("The users table doesn't exist.");
@@ -49,7 +48,7 @@ pg.connect(config.postgres, function (err, client) {
                     callback(true); //This should abort, because we know the table exists at this point
                 }
             },
-            function(result, callback) {
+            function (result, callback) {
                 ++callbackCount;
                 console.log("Created the users table.");
                 callback(null);
@@ -70,6 +69,6 @@ routes.init(app);
 module.exports = app;
 
 var port = process.env.PORT || config.port;
-app.listen(port, function() {
+app.listen(port, function () {
     console.log("Listening on " + port);
 });

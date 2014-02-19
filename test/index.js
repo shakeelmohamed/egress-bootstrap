@@ -11,7 +11,7 @@ var app = require("../app");
 var port = process.env.PORT || config.port;
 var server = app.listen(port);
 var browser = new Browser();
-browser.site = "http://localhost:"+port;
+browser.site = "http://localhost:" + port;
 
 var testuser = {
     username: "hehehahahoho00001234",

@@ -4,12 +4,12 @@ exports.init = function (app) {
     var pg = require("pg");
 
     var config = require("../config");
-    var controllerSet = require("../controllers");
+    var ControllerSet = require("../controllers");
     var utils = require("./utils")(app);
     var validators = require("./validators");
 
     //Lovely controller routing
-    var controllers = new controllerSet(utils.getViewData, validators, config);
+    var controllers = new ControllerSet(utils.getViewData, validators, config);
 
     app.get("/", controllers.home.get);
 
