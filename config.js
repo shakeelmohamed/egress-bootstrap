@@ -2,20 +2,20 @@ var fs = require("fs");
 var url = require("url");
 
 function getDictOfEnvVars(filepath) {
-    if(!fs.existsSync(filepath)) {
+    if (!fs.existsSync(filepath)) {
         console.log("ERROR", filepath, "not found");
         var config = {};
         //This should only happen on Travis CI
-        if(process.env.DATABASE_URL) {
+        if (process.env.DATABASE_URL) {
             config.postgres = process.env.DATABASE_URL;
         }
         return config;
     }
     var fileOfVariable = fs.readFileSync(filepath, "utf8").split("\n");
     var envsDict = {};
-    fileOfVariable.forEach(function(variable){
+    fileOfVariable.forEach(function (variable) {
         var v = variable.split("=");
-        if(v && v.length==2 && v[0] && v[1]) {
+        if (v && v.length === 2 && v[0] && v[1]) {
             envsDict[v[0].replace(" ", "")] = v[1];
         }
     });
@@ -30,7 +30,7 @@ function getDictOfEnvVars(filepath) {
     envsDict.postgres.port = parseInt(parsedPostgresURL.port, 10); //Base 10
     envsDict.postgres.host = parsedPostgresURL.hostname;
 
-    if(!envsDict.PGSSLMODE || envsDict.PGSSLMODE !== "false") {
+    if (!envsDict.PGSSLMODE || envsDict.PGSSLMODE !== "false") {
         envsDict.postgres.ssl = true;
     }
     return envsDict;

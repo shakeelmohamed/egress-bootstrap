@@ -1,6 +1,6 @@
+var async = require("async");
 var express = require("express");
 var fs = require("fs");
-var jade = require("jade");
 var pg = require("pg");
 
 var routes = require("./routes");
@@ -18,45 +18,55 @@ app.configure(function () {
     app.use(express.session({ secret: "egress-secret-goes-right-here-now"}));
     app.use(express.static(__dirname + "/public"));
     app.use(app.router);
-    app.use(function(req, res){
+    app.use(function (req, res) {
         res.redirect("/404");
     });
 });
 
-routes.init(app);
-
-//Before starting the app, see if the users table exists. If not, create it.
 pg.connect(config.postgres, function (err, client) {
     if (err) {
-        return console.error("could not connect to postgres", err);
+        return console.error("ERROR: Could not connect to postgres", err);
     }
-    
-    var checkTableQuery = "select * from information_schema.tables where table_name='users'";
-
-    client.query(checkTableQuery, function (err, result){
-        if (err) {
-            console.log("The users table doesn't exist.", err);
-
-            var createSQL = fs.readFileSync("databases/users.sql", "utf8");
-
-            client.query(createSQL, function (err, result) {
-                if (err) {
-                    console.log("ERROR on creating users table:", err);
+    var callbackCount = 0;
+    async.waterfall([
+            function (callback) {
+                ++callbackCount;
+                var checkTableQuery = "select * from information_schema.tables where table_name='users'";
+                client.query(checkTableQuery, callback);
+            },
+            function (result, callback) {
+                ++callbackCount;
+                if (result.rowCount === 0) {
+                    console.log("The users table doesn't exist.");
+                    //Create the table
+                    var createSQL = fs.readFileSync("databases/users.sql", "utf8");
+                    client.query(createSQL, callback);
                 }
                 else {
-                    console.log("Created the users table.");
+                    callback(true); //This should abort, because we know the table exists at this point
                 }
-            });
+            },
+            function (result, callback) {
+                ++callbackCount;
+                console.log("Created the users table.");
+                callback(null);
+            }
+        ],
+        function (err) {
+            if (err && err !== true) {
+                console.log("ERROR", err, "With callback:", callbackCount);
+            }
+            console.log("Final callback:", callbackCount);
+            //Prevent the connection from hanging
+            client.end();
         }
-        else {
-            console.log("The users table already exists.");
-        }
-    });
+    );
 });
 
+routes.init(app);
 module.exports = app;
 
 var port = process.env.PORT || config.port;
-app.listen(port, function() {
+app.listen(port, function () {
     console.log("Listening on " + port);
 });
