@@ -10,8 +10,9 @@ module.exports = function(getViewData, validators, config){
             }
         },
         post: function(req, res) {
-            var pg = require("pg");
+            var async = require("async");
             var bcrypt = require("bcrypt-nodejs");
+            var pg = require("pg");
 
             var post = req.body;
             
@@ -26,23 +27,34 @@ module.exports = function(getViewData, validators, config){
                     }
                     if (post.login == "login")
                     {
-                        client.query("SELECT * FROM users WHERE username=$1 OR email=$1 LIMIT 1", [post.user], function (err, result) {
-                            if (err || !result || !result.rows || result.rows.length === 0) {
-                                res.render("login", getViewData("Login", "login", req.session.userID, "Error: login failed"));
-                                client.end();
-                            }
-                            else {
-                                if (bcrypt.compareSync(post.password, result.rows[0].secret)) {
-                                    console.log("Login worked for", result.rows[0].username);
-                                    req.session.userID = post.user;
-                                    res.redirect("/account");
+                        async.waterfall([
+                                function (callback) {
+                                    client.query("SELECT * FROM users WHERE username=$1 OR email=$1 LIMIT 1", [post.user], callback);
+                                },
+                                function (result, callback) {
+                                    if (!result || !result.rows || result.rows.length === 0) {
+                                        //TODO: learn more about each of these cases, and why they occur
+                                        //      at least one of these is due to post.user being an invalid user
+                                        callback(true);
+                                    }
+                                    else {
+                                        if (bcrypt.compareSync(post.password, result.rows[0].secret)) {
+                                            console.log("Login worked for", result.rows[0].username);
+                                            req.session.userID = post.user;
+                                            res.redirect("account");
+                                        }
+                                        else {
+                                            callback(true);
+                                        }
+                                    }
                                 }
-                                else {
+                            ],
+                            function (err) {
+                                if (err || err === true) {
                                     res.render("login", getViewData("Login", "login", req.session.userID, "Error: login failed"));
                                 }
-                                client.end();
                             }
-                        });
+                        );
                     }
                     else {
                         res.render("login", getViewData("Login", "login", req.session.userID, "Error: login failed, unexpected form data"));
