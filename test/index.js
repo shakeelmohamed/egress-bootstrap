@@ -21,7 +21,7 @@ var testuser = {
 
 //The individual test suites are in their own files
 require("./bcrypt.js")(assert, testuser, bcrypt);
-require("./postgres.js")(assert, testuser, pg, config);
+require("./postgres.js")(assert, testuser, pg, async, config);
 require("./join_form.js")(assert, testuser, app, browser);
 require("./logout.js")(assert, browser);
 require("./login_form.js")(assert, testuser, app, browser);

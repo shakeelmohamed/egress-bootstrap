@@ -28,10 +28,9 @@ pg.connect(config.postgres, function (err, client) {
     if (err) {
         return console.error("could not connect to postgres", err);
     }
-    
+    var callbackCount = 0;
     async.waterfall([
             function (callback) {
-                var callbackCount = 0;
                 ++callbackCount;
                 var checkTableQuery = "select * from information_schema.tables where table_name='users'";
                 client.query(checkTableQuery, callback);
