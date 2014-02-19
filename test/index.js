@@ -13,7 +13,11 @@ var server = app.listen(port);
 var browser = new Browser();
 browser.site = "http://localhost:"+port;
 
-var testuser = {username: "hehehahahoho00001234", email: "nowayjose@donteventhinkaboutit.com", password: "imjustalittletestuser"};
+var testuser = {
+    username: "hehehahahoho00001234",
+    email: "nowayjose@donteventhinkaboutit.com",
+    password: "imjustalittletestuser"
+};
 
 //The individual test suites are in their own files
 require("./bcrypt.js")(assert, testuser, bcrypt);
