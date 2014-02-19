@@ -1,14 +1,10 @@
 exports.init = function (app) {
-    var bcrypt = require("bcrypt-nodejs");
-    var jade = require("jade");
-    var pg = require("pg");
-
     var config = require("../config");
     var ControllerSet = require("../controllers");
     var utils = require("./utils")(app);
     var validators = require("./validators");
 
-    //Lovely controller routing
+    // Lovely controller routing
     var controllers = new ControllerSet(utils.getViewData, validators, config);
 
     app.get("/", controllers.home.get);

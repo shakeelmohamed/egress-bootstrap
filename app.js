@@ -1,7 +1,6 @@
 var async = require("async");
 var express = require("express");
 var fs = require("fs");
-var jade = require("jade");
 var pg = require("pg");
 
 var routes = require("./routes");
@@ -26,7 +25,7 @@ app.configure(function () {
 
 pg.connect(config.postgres, function (err, client) {
     if (err) {
-        return console.error("could not connect to postgres", err);
+        return console.error("ERROR: Could not connect to postgres", err);
     }
     var callbackCount = 0;
     async.waterfall([

@@ -1,8 +1,8 @@
 {
     "name": "egress",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "description": "A minimal Express app template for a user account system.",
-    "main": "web.js",
+    "main": "app.js",
     "dependencies": {
         "async": "*",
         "bcrypt-nodejs": "0.0.3",
@@ -28,6 +28,7 @@
         "node": true,
         "quotmark": "double",
         "trailing": true,
+        "unused": true,
         "white": true
     },
     "repository": {
@@ -35,7 +36,9 @@
         "url": "https://github.com/shakeelmohamed/egress"
     },
     "scripts": {
-        "test": "mocha test/index.js"
+        "start": "node app.js",
+        "test": "mocha test/index.js",
+        "grunt": "grunt"
     },
     "keywords": [
         "account",
@@ -45,7 +48,6 @@
         "postgres",
         "postgresql",
         "scaffold",
-        "system",
         "user",
         "webapp"
     ],

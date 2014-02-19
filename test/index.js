@@ -2,14 +2,14 @@ var assert = require("assert");
 var async = require("async");
 var bcrypt = require("bcrypt-nodejs");
 var Browser = require("zombie");
-var mocha = require("mocha");
 var pg = require("pg");
 
 var config = require("../config");
-
 var app = require("../app");
 var port = process.env.PORT || config.port;
-var server = app.listen(port);
+
+app.listen(port);
+
 var browser = new Browser();
 browser.site = "http://localhost:" + port;
 
