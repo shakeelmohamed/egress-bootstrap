@@ -4,8 +4,8 @@ var bcrypt = require("bcrypt-nodejs");
 var Browser = require("zombie");
 var pg = require("pg");
 
-var config = require("../config");
 var app = require("../app");
+var config = app.locals;
 var port = process.env.PORT || config.port;
 
 app.listen(port);

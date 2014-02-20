@@ -1,11 +1,10 @@
 exports.init = function (app) {
-    var config = require("../config");
     var ControllerSet = require("../controllers");
     var utils = require("./utils")(app);
     var validators = require("./validators");
 
     // Lovely controller routing
-    var controllers = new ControllerSet(utils.getViewData, validators, config);
+    var controllers = new ControllerSet(utils.getViewData, validators, app.locals);
 
     app.get("/", controllers.home.get);
 

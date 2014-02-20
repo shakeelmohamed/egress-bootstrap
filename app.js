@@ -4,11 +4,45 @@ var fs = require("fs");
 var pg = require("pg");
 
 var routes = require("./routes");
-var config = require("./config");
 var app = express();
 
+// Set site configuration in config.js
+var config = require("./config");
+config = getEnvironmentVariables(".env", config);
+
+function getEnvironmentVariables(filepath, existingVariables) {
+    var vars = {};
+
+    // Copy over existing variables
+    for (var key in existingVariables) {
+        vars[key] = existingVariables[key];
+    }
+    if (fs.existsSync(filepath)) {
+        var fileOfVariables = fs.readFileSync(filepath, "utf8").split("\n");
+        
+        // For every line in the .env file, parse out the key-value pairs
+        // and add them to the vars object.
+        fileOfVariables.forEach(function (variable) {
+            var key = variable.substring(0, variable.indexOf("="));
+            var value = variable.substring(variable.indexOf("=") + 1);
+            if (key && value) {
+                vars[key.replace(" ", "")] = value;
+            }
+        });
+    }
+    else {
+        console.log("ERROR", filepath, "not found");
+        // This should only happen on Travis CI
+        if (process.env.DATABASE_URL) {
+            vars.DATABASE_URL = process.env.DATABASE_URL;
+        }
+    }
+    
+    return vars;
+}
+
 app.configure(function () {
-    app.locals(config); // Get site configuration from config.js
+    app.locals(config);
     app.locals.pretty = true;
     app.set("views", __dirname + "/jade");
     app.set("view engine", "jade");
@@ -38,7 +72,7 @@ pg.connect(config.DATABASE_URL, function (err, client) {
                 ++callbackCount;
                 if (result.rowCount === 0) {
                     console.log("The users table doesn't exist.");
-                    //Create the table
+                    // Create the table
                     var createSQL = fs.readFileSync("databases/users.sql", "utf8");
                     client.query(createSQL, callback);
                 }
@@ -56,8 +90,10 @@ pg.connect(config.DATABASE_URL, function (err, client) {
             if (err && err !== true) {
                 console.log("ERROR", err, "With callback:", callbackCount);
             }
-            console.log("Final callback:", callbackCount);
-            //Prevent the connection from hanging
+            else {
+                console.log("The users table already exists.");
+            }
+            // Prevent the connection from hanging
             client.end();
         }
     );
