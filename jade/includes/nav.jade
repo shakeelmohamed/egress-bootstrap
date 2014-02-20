@@ -7,7 +7,7 @@
                 span.icon-bar
             a(class="navbar-brand" href="./") #{siteName}
         .collapse.navbar-collapse
-            ul.nav.navbar-nav
+            ul.nav.navbar-nav.navbar-right
                 // For the actual navigation items, follow the format of {'url': 'visiblename' }
                 for navItem, path in {"": "Home"}
                     if path === loc
@@ -16,8 +16,7 @@
                     else
                         li
                             a(href= "/" + path)= navItem
-            
-            ul.nav.navbar-nav.navbar-right
+                
                 if user
                     li
                         a(href="/account") Hello, #{user}
