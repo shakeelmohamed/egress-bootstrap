@@ -37,8 +37,7 @@
     },
     "scripts": {
         "start": "node app.js",
-        "test": "mocha test/index.js",
-        "grunt": "grunt"
+        "test": "mocha test/index.js"
     },
     "keywords": [
         "account",
