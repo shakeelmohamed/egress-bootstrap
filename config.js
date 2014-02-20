@@ -7,36 +7,27 @@ function getDictOfEnvVars(filepath) {
         var config = {};
         //This should only happen on Travis CI
         if (process.env.DATABASE_URL) {
-            config.postgres = process.env.DATABASE_URL;
+            config.DATABASE_URL = process.env.DATABASE_URL;
         }
         return config;
     }
-    var fileOfVariable = fs.readFileSync(filepath, "utf8").split("\n");
+    var fileOfVariables = fs.readFileSync(filepath, "utf8").split("\n");
+    
+    // For every line in the .env file, parse out the key-value pairs
+    // and add them to the envsDict object.
     var envsDict = {};
-    fileOfVariable.forEach(function (variable) {
-        var v = variable.split("=");
-        if (v && v.length === 2 && v[0] && v[1]) {
-            envsDict[v[0].replace(" ", "")] = v[1];
+    fileOfVariables.forEach(function (variable) {
+        var key = variable.substring(0, variable.indexOf("="));
+        var value = variable.substring(variable.indexOf("=")+1);
+        if (key && value) {
+            envsDict[key.replace(" ", "")] = value;
         }
     });
-    var parsedPostgresURL = url.parse(envsDict.DATABASE_URL);
-
-    var auth = parsedPostgresURL.auth.split(":");
-    envsDict.postgres = {};
-    envsDict.postgres.user = auth[0];
-    envsDict.postgres.password = auth[1];
-
-    envsDict.postgres.database = parsedPostgresURL.path.replace("/", "");
-    envsDict.postgres.port = parseInt(parsedPostgresURL.port, 10); //Base 10
-    envsDict.postgres.host = parsedPostgresURL.hostname;
-
-    if (!envsDict.PGSSLMODE || envsDict.PGSSLMODE !== "false") {
-        envsDict.postgres.ssl = true;
-    }
+    
     return envsDict;
 }
 
-var config = getDictOfEnvVars(".env");
+var config = getDictOfEnvVars(".env"); // This is primarily use to parse the DATABASE_URL value
 config.siteName = "Egress";
 config.siteAuthor = "Shakeel Mohamed";
 config.siteDescription = "Egress, start writing a web app already.";

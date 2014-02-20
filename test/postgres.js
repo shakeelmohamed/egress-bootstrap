@@ -2,7 +2,7 @@ module.exports = function (assert, testuser, pg, async, config) {
     describe("PostgreSQL", function () {
         describe("credentials", function () {
             it("should connect to a database, and query the version", function (done) {
-                pg.connect(config.postgres, function (err, client) {
+                pg.connect(config.DATABASE_URL, function (err, client) {
                     if (err) {
                         console.log(err);
                         assert.ifError(err, "Unable to connect to database.");

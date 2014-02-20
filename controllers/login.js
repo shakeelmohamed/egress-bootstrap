@@ -21,7 +21,7 @@ module.exports = function (getViewData, validators, config) {
                 
             }
             else {
-                pg.connect(config.postgres, function (err, client) {
+                pg.connect(config.DATABASE_URL, function (err, client) {
                     if (err) {
                         return console.error("could not connect to postgres", err);
                     }

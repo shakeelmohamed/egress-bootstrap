@@ -35,17 +35,16 @@ The backend is implemented using PostgreSQL.
 ### Development with Foreman:
 
 1. Create a `.env` file in the root directory of this project
-2. Your `.env` file should contain your PostgreSQL connection string in the following format, along with setting the `PGSSLMODE` variable to `require`:
+2. Your `.env` file should contain your PostgreSQL connection string in the following format, the `?ssl=true` bit is necessary only if your database connection requires SSL (Heroku's databases do):
 
 ```
-DATABASE_URL=postgres://<username>:<password>@<host>:<port>/<dbname>
-PGSSLMODE=require
+DATABASE_URL=postgres://<username>:<password>@<host>:<port>/<dbname>?ssl=true
 ```
 
 This will allow your application to connect to your database
 
 3. Modify the `config` object in `config.js`
-4. Running `foreman start` will process the `DATABASE_URL` and `PGSSLMODE` values, locally
+4. Running `foreman start` will process the `DATABASE_URL` variable, locally.
 
 ### Deploying to Heroku:
 
@@ -53,8 +52,7 @@ This will allow your application to connect to your database
 2. Set your environment variables on Heroku
     * If you're already setup you `.env` file as documented above, simply execute `heroku config:push`
     * Otherwise you can execute
-        1. Execute `heroku config:set DATABASE_URL=postgres://<username>:<password>@<host>:<port>/<dbname>`
-        2. Execute `heroku config:set PGSSLMODE=require`
+        1. Execute `heroku config:set DATABASE_URL=postgres://<username>:<password>@<host>:<port>/<dbname>?ssl=true`
 4. Modify the `config` object in `config.js`
 5. Push your code up to your Heroku app, done
 

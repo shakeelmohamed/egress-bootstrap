@@ -1,7 +1,7 @@
 module.exports = function (assert, testuser, pg, async, config) {
     describe("Cleanup", function () {
         it("test user should be deleted from the PostgreSQL database", function (done) {
-            pg.connect(config.postgres, function (err, client) {
+            pg.connect(config.DATABASE_URL, function (err, client) {
                 if (err) {
                     console.log(err);
                     assert.ifError(err, "Unable to connect to database.");

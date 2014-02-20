@@ -23,7 +23,7 @@ app.configure(function () {
     });
 });
 
-pg.connect(config.postgres, function (err, client) {
+pg.connect(config.DATABASE_URL, function (err, client) {
     if (err) {
         return console.error("ERROR: Could not connect to postgres", err);
     }
