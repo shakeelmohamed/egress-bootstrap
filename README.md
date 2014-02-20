@@ -26,10 +26,10 @@ The backend is implemented using PostgreSQL.
 
 ## Usage
 * The best way to use Egress is by using the [Yeoman generator](http://github.com/shakeelmohamed/generator-egress)
-* This package was not meant to be installed over npm
+* This package was not meant to be installed through npm
     * But, you can run `npm install egress`, then copy the contents of the `node_modules/egress` folder to the root of your project directory and follow the steps below
-    * Or, you can clone this project in the root of your project directory by executing `git clone git@github.com/shakeelmohamed/egress.git`
-* You don't need to declare this package as a dependency in your project's `package.json` file.
+    * Or, you can clone this project in the root of your project directory by running `git clone git@github.com/shakeelmohamed/egress.git`
+* You don't need to declare this module as a dependency in your project's `package.json` file.
 
 
 ### Development with Foreman:
@@ -50,9 +50,9 @@ This will allow your application to connect to your database
 
 1. Authenticate via the Heroku command line, `heroku login`
 2. Set your environment variables on Heroku
-    * If you're already setup you `.env` file as documented above, simply execute `heroku config:push`
-    * Otherwise you can execute
-        1. Execute `heroku config:set DATABASE_URL=postgres://<username>:<password>@<host>:<port>/<dbname>?ssl=true`
+    * If you've already setup your `.env` file as documented above, simply run `heroku config:push`
+    * Otherwise you can run the following command before `heroku config:push`
+    `heroku config:set DATABASE_URL=postgres://<username>:<password>@<host>:<port>/<dbname>?ssl=true`
 4. Modify the `config` object in `config.js`
 5. Push your code up to your Heroku app, done
 
@@ -63,16 +63,16 @@ This will allow your application to connect to your database
 ## Modifying site content
 
 * See the `jade` directory for various markup files used to create the web views.
-* See the `controllers` directory for specific functionality for each views, along with the files in `routes` for how they're invoked.
+* See the `controllers` directory for specific functionality for the views, along with the files in `routes` for how they're invoked.
 * Add additional frontend assets to the `public` directory, then reference them in the files found in `jade/includes`, particularly `head.jade` and `scripts.jade`
 
 ## Running the tests
 
 * Make sure your environment is setup to run [Zombie.js](http://zombie.labnotes.org/#Infection)
 * With foreman
-    * execute `foreman run npm test` from the root directory of this repository
+    * run `foreman run npm test` from the root directory of this repository
 * Without foreman
-    * execute `npm test`
+    * run `npm test`
 
 ## Validating JS and Jade files
 
@@ -83,7 +83,6 @@ This will allow your application to connect to your database
 * There is no significant input validation in place. I'm planning to implement [validator.js](https://github.com/chriso/validator.js). This is necessary for:
     * Security issues
     * Password requirements
-* There is no protection against SQL injection, which is a huge security concern. This might be addressed as a byproduct of adding input validation.
 
 # Dependencies
 
