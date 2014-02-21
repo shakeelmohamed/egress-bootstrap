@@ -1,4 +1,14 @@
-module.exports = function (getViewData, validators, config) {
+function areFieldsSet(postObject) {
+    // Define your custom validation here
+    if (postObject.user && postObject.email && postObject.password) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+module.exports = function (getViewData, config) {
     return {
         get: function (req, res) {
             if (req.session.userID) {
@@ -17,7 +27,7 @@ module.exports = function (getViewData, validators, config) {
             var post = req.body;
 
             //TODO: add some data validation: email, password format, string length, SQL sanitize
-            if (!validators.join(post)) {
+            if (!areFieldsSet(post)) {
                 res.render("join", getViewData("Join", "join", req.session.userID, "Error: user registration failed"));
             }
             else {

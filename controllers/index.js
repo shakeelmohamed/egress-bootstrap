@@ -1,5 +1,5 @@
 //Here we're exporting an object constructor
-module.exports = function ControllerSet(getViewData, validators, config) {
+module.exports = function ControllerSet(getViewData, config) {
     // Get a list of all files in the controllers folder
     var controllers = require("fs").readdirSync(__dirname);
 
@@ -11,6 +11,6 @@ module.exports = function ControllerSet(getViewData, validators, config) {
         }
         
         //ex: this["home"] = require("./home.js")(getViewData, validators);
-        this[name] = require("./" + name)(getViewData, validators, config);
+        this[name] = require("./" + name)(getViewData, config);
     }
 };
