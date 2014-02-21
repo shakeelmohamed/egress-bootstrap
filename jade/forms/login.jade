@@ -1,4 +1,4 @@
-form.form-horizontal.centered-form(method="post" action="/login" name="entry_form" onsubmit="return validateLogin(document.getElementById('user').value, document.getElementById('password').value);")
-    input#user.form-control.input-lg(type="text" name="user" placeholder="Username")
-    input#password.form-control.input-lg(type="password" name="password" placeholder="Password")
+form.form-horizontal.centered-form(method="post" action="/login" name="entry_form")
+    input#user.form-control.input-lg(type="text" name="user" placeholder="Username or email" required)
+    input#password.form-control.input-lg(type="password" name="password" placeholder="Password" required)
     button#login.btn.btn-info.btn-lg.big-button(type="submit" name="login" value="login") Login
