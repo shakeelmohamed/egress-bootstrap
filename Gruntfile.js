@@ -9,18 +9,24 @@ module.exports = function (grunt) {
                 "app.js",
                 "config.js",
                 "controllers/*.js",
+                //"controllers/validators/*.js", //TODO: uncomment
+                //"public/js/egress-*.js", //TODO: uncomment
                 "routes/*.js",
                 "test/*.js"
             ],
             options: packageFile.jshintConfig
         },
         jade: {
-            "temp/jade": ["jade/*.jade", "jade/includes/*.jade"]
+            "temp/jade": ["jade/*.jade", "jade/*/*.jade"]
+        },
+        clean: {
+            jade: "temp" // Remove the temp directory containing the compiled jade file from above
         }
     });
     
     grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-contrib-jade");
+    grunt.loadNpmTasks("grunt-contrib-clean");
 
-    grunt.registerTask("default", ["jshint", "jade"]);
+    grunt.registerTask("default", ["jshint", "jade", "clean"]);
 };
