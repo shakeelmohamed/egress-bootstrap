@@ -9,8 +9,8 @@ module.exports = function (grunt) {
                 "app.js",
                 "config.js",
                 "controllers/*.js",
-                //"controllers/validators/*.js", //TODO: uncomment
-                //"public/js/egress-*.js", //TODO: uncomment
+                "controllers/validators/*.js",
+                "public/js/egress-*.js",
                 "routes/*.js",
                 "test/*.js"
             ],
