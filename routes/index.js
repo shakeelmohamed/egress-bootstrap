@@ -19,4 +19,8 @@ exports.init = function (app) {
 
     // Pass in middleware for pages that require a user to be logged in
     app.get("/account", utils.checkAuth, controllers.account.get);
+
+    // Validation routes
+    app.post("/validate/join", require("../controllers/validators/join")().post);
+    app.get("/validate/join", require("../controllers/validators/join")().get);
 };
