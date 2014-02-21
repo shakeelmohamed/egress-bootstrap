@@ -5,7 +5,8 @@ html(lang="en")
         include includes/nav
         .container
             .span12.text-center.egress-template
-                h1 Join #{siteName}
+                header.page-header
+                    h1 Join #{siteName}
                 if msg
                     div.alert.alert-danger#error #{msg}
                 
