@@ -1,4 +1,3 @@
-
 module.exports = function (app) {
     return {
         getViewData: function (title, pathSuffix, userID, message) {

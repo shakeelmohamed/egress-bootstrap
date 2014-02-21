@@ -10,7 +10,7 @@ module.exports = function ControllerSet(getViewData, config) {
             continue;
         }
         
-        //ex: this["home"] = require("./home.js")(getViewData, validators);
+        //ex: this["home"] = require("./home.js")(getViewData, config);
         this[name] = require("./" + name)(getViewData, config);
     }
 };
