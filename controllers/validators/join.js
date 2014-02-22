@@ -51,9 +51,6 @@ module.exports = function () {
                 response.ok = false;
             }
             res.json(response);
-        },
-        get: function (req, res) {
-            res.json({oh: "NO!"});
         }
     };
 };

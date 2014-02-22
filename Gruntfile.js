@@ -10,7 +10,8 @@ module.exports = function (grunt) {
                 "config.js",
                 "controllers/*.js",
                 "controllers/validators/*.js",
-                "public/js/egress-*.js",
+                "public/js/egress.js",
+                "public/js/validate/*.js",
                 "routes/*.js",
                 "test/*.js"
             ],

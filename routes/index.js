@@ -22,5 +22,4 @@ exports.init = function (app) {
 
     // Validation routes
     app.post("/validate/join", require("../controllers/validators/join")().post);
-    app.get("/validate/join", require("../controllers/validators/join")().get);
 };

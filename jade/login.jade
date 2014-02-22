@@ -7,9 +7,11 @@ html(lang="en")
             .span12.text-center.egress-template
                 header.page-header
                     h1 Login to #{siteName}
-                if msg
-                    div.alert.alert-danger#error #{msg}
+                    #error
+                        if msg
+                            | #{msg}
                 
                 include forms/login
         
         include includes/scripts
+        script(src="js/validate/login.js")

@@ -7,40 +7,11 @@ html(lang="en")
             .span12.text-center.egress-template
                 header.page-header
                     h1 Join #{siteName}
-                if msg
-                    div.alert.alert-danger#error #{msg}
+                    #error
+                        if msg
+                            | #{msg}
                 
                 include forms/join
         
         include includes/scripts
-        script.
-            //TODO: move this stuff to it's own JS file
-            $(function() {
-                $("#join_form").submit(function() {
-                    $("#error").text("").hide(); // Empty the error message
-                    
-                    //TODO: check if any of the fields contain spaces, they should not
-
-                    //TODO: also use the validator.isEmail, etc since it's already loaded up
-                        //This should all be done well before doing the validation post request
-
-                    var response = $.post(
-                        "http://localhost:5000/validate/join",
-                        {
-                            user: "Jossssssshn",
-                            email: "2sdfsdfsdfpm"
-                        });
-                    var responseObject = JSON.parse(response);
-                    if (responseObject.ok && responseObject.errors.length === 0) {
-                        return true;
-                    }
-                    else {
-                        var errorString = "Errors:";
-                        for (var i = 0; i < responseObject.errors.length; i++) {
-                            errorString += "<br>" + responseObject.errors[i];
-                        }
-                        $("#error").html(errorString).show(); // Set the error message
-                        return false; // return false to cancel form action
-                    }
-                });
-            });
+        script(src="js/validate/join.js")
