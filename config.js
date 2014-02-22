@@ -1,6 +1,6 @@
 module.exports = {
-    siteName: "Egress",
+    siteName: "egress",
     siteAuthor: "Shakeel Mohamed",
-    siteDescription: "Egress, start writing a web app already.",
+    siteDescription: "egress, start writing a web app already.",
     port: 5000
 };

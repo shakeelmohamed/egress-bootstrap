@@ -14,4 +14,3 @@ module.exports = function ControllerSet(getViewData, config) {
         this[name] = require("./" + name)(getViewData, config);
     }
 };
-//TODO: refactor this somehow to be recursive

@@ -1,14 +1,13 @@
-Egress: start writing a web app already.
+egress: start writing a web app already.
 ====
 
-Egress is a minimal [Express](http://expressjs.com/) app template for a user account system.
+egress is a minimal [Express](http://expressjs.com/) app template for a user account system.
 I built this with the intention of getting user-based node.js apps scaffolded out quickly.
-The backend is implemented using PostgreSQL.
 
 <table>
     <tr>
         <th>Branch</th>
-        <th>Status</th>
+        <th>Build Status</th>
     </tr>
     <tr>
         <td>Master</td>
@@ -25,7 +24,7 @@ The backend is implemented using PostgreSQL.
 </table>
 
 ## Usage
-* The best way to use Egress is by using the [Yeoman generator](http://github.com/shakeelmohamed/generator-egress)
+* The best way to use egress is by using the [Yeoman generator](http://github.com/shakeelmohamed/generator-egress)
 * This package was not meant to be installed through npm
     * But, you can run `npm install egress`, then copy the contents of the `node_modules/egress` folder to the root of your project directory and follow the steps below
     * Or, you can clone this project in the root of your project directory by running `git clone git@github.com/shakeelmohamed/egress.git`
@@ -53,12 +52,8 @@ This will allow your application to connect to your database
     * If you've already setup your `.env` file as documented above, simply run `heroku config:push`
     * Otherwise you can run the following command before `heroku config:push`
     `heroku config:set DATABASE_URL=postgres://<username>:<password>@<host>:<port>/<dbname>?ssl=true`
-4. Modify the `config` object in `config.js`
-5. Push your code up to your Heroku app, done
-
-### Deploying elsewhere
-
-* Submit a pull request
+3. Modify the `config` object in `config.js`
+4. Push your code up to your Heroku app, done
 
 ## Modifying site content
 
@@ -80,19 +75,17 @@ This will allow your application to connect to your database
 
 ## Current problems (marked with a TODO)
 
-* There is no significant input validation in place. I'm planning to implement [validator.js](https://github.com/chriso/validator.js). This is necessary for:
-    * Security issues
-    * Password requirements
+* There is no significant input validation in place, I suggest using [validator.js](https://github.com/chriso/validator.js).
 
 # Dependencies
 
-* [Bootstrap v3.0.0](https://github.com/twbs/bootstrap/releases/tag/v3.0.0)
+* [Bootstrap v3.1.1](https://github.com/twbs/bootstrap/releases/tag/v3.1.1)
 * [PostgreSQL](http://www.postgresql.org/)
 * For other dependencies see [package.json](package.json)
 
 # Issues
 
-* When in doubt, create an issue and I'll probably respond within 24 hours.
+* When in doubt, create an issue!
 
 # Contact
 
