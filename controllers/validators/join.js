@@ -24,23 +24,19 @@ module.exports = function () {
 
             // username
                 // Check length
-            var e = checkLength(username, "Username", 4, 30);
-            if (e) {
-                response.errors.push(e);
-                e = false;
+            var err = checkLength(username, "Username", 4, 30);
+            if (err) {
+                response.errors.push(err);
+                err = false;
             }
-
-                // Check alphanumeric
                 // Check available
             // email
                 // Check length
-            e = checkLength(email, "Email", 4, 254);
-            if (e) {
-                response.errors.push(e);
-                e = false;
+            err = checkLength(email, "Email", 4, 254);
+            if (err) {
+                response.errors.push(err);
+                err = false;
             }
-                // Check alphanumeric
-                // Check is an email
                 // Check available
 
             // Save the database related unique tests for the very end

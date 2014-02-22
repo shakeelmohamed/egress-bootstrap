@@ -29,7 +29,7 @@ $(function () {
         var errors = checkJoinFields($("#user").val(), $("#email").val(), $("#password").val());
 
         if (errors.length > 0) {
-            var errorString = "Errors:";
+            var errorString = "Error:";
             for (var i = 0; i < errors.length; i++) {
                 errorString += "<br>" + errors[i];
             }
@@ -51,7 +51,7 @@ $(function () {
                 return true;
             }
             else {
-                var errorString = "Errors:";
+                var errorString = "Error:";
                 for (var e = 0; e < responseObject.errors.length; e++) {
                     errorString += "<br>" + responseObject.errors[e];
                 }
