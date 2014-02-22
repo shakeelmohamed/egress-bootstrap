@@ -73,7 +73,8 @@ This will allow your application to connect to your database
 
 ## Current problems (marked with a TODO)
 
-* There is no significant input validation in place, I suggest using [validator.js](https://github.com/chriso/validator.js).
+* There is no significant input validation in place, I suggest using [validator.js](https://github.com/chriso/validator.js) since it's already being used in the browser.
+See the current validation in [`public/js/validators.js`](public/js/validators.js)
 
 # Dependencies
 
