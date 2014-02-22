@@ -1,0 +1,5 @@
+form#join_form.form-horizontal.centered-form(method="post" action="/join" name="join_form")
+    input#user.form-control.input-lg(type="text" name="user" placeholder="Username" pattern=".{4,}" required)
+    input#email.form-control.input-lg(type="text" name="email" placeholder="Email" required)
+    input#password.form-control.input-lg(type="password" name="password" placeholder="Password" pattern=".{6,}" title="Please enter a password with at least 6 characters" required)
+    button#register.btn.btn-info.btn-lg.big-button(type="submit" name="register" value="register") Join

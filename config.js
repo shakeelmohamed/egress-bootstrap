@@ -1,7 +1,6 @@
-var config = {
-    "siteName": "Egress",
-    "siteAuthor": "Shakeel Mohamed",
-    "siteDescription": "Egress, start writing a web app already."
+module.exports = {
+    siteName: "egress",
+    siteAuthor: "Shakeel Mohamed",
+    siteDescription: "egress, start writing a web app already.",
+    port: 5000
 };
-
-module.exports = config;

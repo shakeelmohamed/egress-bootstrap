@@ -1,4 +1,7 @@
 .env
 node_modules
-
 npm-debug.log
+jade/*.html
+jade/includes/*.html
+all
+temp/*

@@ -1,1 +1,4 @@
-app/templates/public/*/js
+app/templates/public/js/bootstrap*
+app/templates/public/js/html5shiv.js
+app/templates/public/js/jquery*
+app/templates/public/js/*.min.js

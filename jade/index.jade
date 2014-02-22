@@ -1,8 +1,18 @@
-include includes/head
-body
-    include includes/nav
-    .container
-        .text-center.egress-template
-            h1 Welcome to #{siteName}
+doctype html
+html(lang="en")
+    include includes/head
+    body
+        include includes/nav
+        .container
+            .text-center.egress-template
+                header.page-header
+                    h1 Welcome to #{siteName}
 
-    include includes/scripts
+                p.lead egress is a minimal 
+                    a(href="http://expressjs.com/") express 
+                    | app template for a user account system.
+                p.lead I built this with the intention of getting user-based node.js apps scaffolded out quickly.
+                p.lead For more information about egress, check out the 
+                    a(href="http://github.com/shakeelmohamed/egress") Github repo
+
+        include includes/scripts
