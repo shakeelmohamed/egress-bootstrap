@@ -30,6 +30,10 @@ I built this with the intention of getting user-based node.js apps scaffolded ou
     * Or, you can clone this project in the root of your project directory by running `git clone git@github.com/shakeelmohamed/egress.git`
 * You don't need to declare this module as a dependency in your project's `package.json` file.
 
+## Current problems (marked with a TODO)
+
+* There is no significant input validation in place, I suggest using [validator.js](https://github.com/chriso/validator.js) since it's already being used in the browser.
+See the current validation in [public/js/validator.min.js](public/js/validators.js)
 
 ### Development with Foreman:
 
@@ -70,11 +74,6 @@ This will allow your application to connect to your database
 ## Validating JS and Jade files
 
 * Run `grunt`
-
-## Current problems (marked with a TODO)
-
-* There is no significant input validation in place, I suggest using [validator.js](https://github.com/chriso/validator.js) since it's already being used in the browser.
-See the current validation in [`public/js/validators.js`](public/js/validators.js)
 
 # Dependencies
 
