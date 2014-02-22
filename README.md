@@ -32,8 +32,8 @@ I built this with the intention of getting user-based node.js apps scaffolded ou
 
 ## Current problems (marked with a TODO)
 
-* There is no significant input validation in place, I suggest using [validator.js](https://github.com/chriso/validator.js) since it's already being used in the browser.
-See the current validation in [public/js/validator.min.js](public/js/validators.js)
+* There is no significant input validation in place, I suggest using [validator.js](https://github.com/chriso/validator.js) since it's already being used in the browser - located at [public/js/validator.min.js](public/js/validator.min.js).
+See the current validation in [public/js/egress-validators.js](public/js/egress-validators.js)
 
 ### Development with Foreman:
 
