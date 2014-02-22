@@ -35,9 +35,9 @@ I built this with the intention of getting user-based node.js apps scaffolded ou
 
 1. Create a `.env` file in the root directory of this project
 2. Your `.env` file should contain your PostgreSQL connection string in the following format, the `?ssl=true` bit is necessary only if your database connection requires SSL (Heroku's databases do):
-    ```
+```
     DATABASE_URL=postgres://<username>:<password>@<host>:<port>/<dbname>?ssl=true
-    ```
+```
 This will allow your application to connect to your database
 
 3. Modify the `config` object in `config.js`
