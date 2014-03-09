@@ -39,7 +39,7 @@ module.exports = function (getViewData, config) {
                     {
                         async.waterfall([
                                 function (callback) {
-                                    client.query("SELECT * FROM users WHERE username=$1 OR email=$1 LIMIT 1", [post.user], callback);
+                                    client.query("SELECT * FROM users WHERE LOWER(username)=LOWER($1) OR LOWER(email)=LOWER($1) LIMIT 1", [post.user], callback);
                                 },
                                 function (result, callback) {
                                     if (!result || !result.rows || result.rows.length === 0) {
