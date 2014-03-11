@@ -1,6 +1,6 @@
 {
     "name": "egress",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "A minimal Express app template for a user account system.",
     "main": "app.js",
     "dependencies": {
