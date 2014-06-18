@@ -1,7 +1,7 @@
 {
-    "name": "egress",
-    "version": "0.1.1",
-    "description": "A minimal Express app template for a user account system.",
+    "name": "egress-bootstrap",
+    "version": "0.1.2",
+    "description": "A minimal Express app template for a user account system, built with Twitter's Bootstrap.",
     "main": "app.js",
     "dependencies": {
         "async": "*",
@@ -33,7 +33,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/shakeelmohamed/egress"
+        "url": "https://github.com/shakeelmohamed/egress-bootstrap"
     },
     "scripts": {
         "start": "node app.js",
@@ -41,6 +41,7 @@
     },
     "keywords": [
         "account",
+        "bootstrap",
         "egress",
         "express",
         "minimal",
@@ -57,7 +58,7 @@
     },
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/shakeelmohamed/egress/issues"
+        "url": "https://github.com/shakeelmohamed/egress-bootstrap/issues"
     },
     "engine": {
         "node": "0.10.x"

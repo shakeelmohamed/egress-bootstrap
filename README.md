@@ -1,7 +1,7 @@
-egress: start writing a web app already.
+egress-bootstrap: start writing a web app already.
 ====
 
-egress is a minimal [Express](http://expressjs.com/) app template for a user account system.
+egress-bootstrap is a minimal [Express](http://expressjs.com/) app template for a user account system, built with Twitter's Bootstrap.
 I built this with the intention of getting user-based node.js apps scaffolded out quickly.
 
 <table>
@@ -12,22 +12,22 @@ I built this with the intention of getting user-based node.js apps scaffolded ou
     <tr>
         <td>Master</td>
         <td>
-            <img src="https://travis-ci.org/shakeelmohamed/egress.png?branch=master" />
+            <img src="https://travis-ci.org/shakeelmohamed/egress-bootstrap.png?branch=master" />
         </td>
     </tr>
     <tr>
         <td>Develop</td>
         <td>
-            <img src="https://travis-ci.org/shakeelmohamed/egress.png?branch=develop" />
+            <img src="https://travis-ci.org/shakeelmohamed/egress-bootstrap.png?branch=develop" />
         </td>
     </tr>
 </table>
 
 ## Usage
-* The best way to use egress is by using the [Yeoman generator](http://github.com/shakeelmohamed/generator-egress)
+* The best way to use egress-bootstrap is by using the [Yeoman generator](http://github.com/shakeelmohamed/generator-egress)
 * This package was not meant to be installed through npm
-    * But, you can run `npm install egress`, then copy the contents of the `node_modules/egress` folder to the root of your project directory and follow the steps below
-    * Or, you can clone this project in the root of your project directory by running `git clone git@github.com/shakeelmohamed/egress.git`
+    * But, you can run `npm install egress-bootstrap`, then copy the contents of the `node_modules/egress-bootstrap` folder to the root of your project directory and follow the steps below
+    * Or, you can clone this project in the root of your project directory by running `git clone git@github.com/shakeelmohamed/egress-bootstrap.git`
 * You don't need to declare this module as a dependency in your project's `package.json` file.
 
 ## Current problems (marked with a TODO)

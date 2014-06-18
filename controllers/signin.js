@@ -16,7 +16,7 @@ module.exports = function (getViewData, config) {
                 res.redirect("account");
             }
             else {
-                res.render("login", getViewData("Login", "login"));
+                res.render("signin", getViewData("Sign in", "signin"));
             }
         },
         post: function (req, res) {
@@ -28,14 +28,14 @@ module.exports = function (getViewData, config) {
             
             //TODO: add some data validation: email, password format, string length, SQL sanitize
             if (!areFieldsSet(post)) {
-                res.render("login", getViewData("Login", "login", req.session.userID, "Error: login failed"));
+                res.render("signin", getViewData("Sign in", "signin", req.session.userID, "Error: signin failed"));
             }
             else {
                 pg.connect(config.DATABASE_URL, function (err, client) {
                     if (err) {
                         return console.error("could not connect to postgres", err);
                     }
-                    if (post.login == "login")
+                    if (post.signin == "signin")
                     {
                         async.waterfall([
                                 function (callback) {
@@ -49,7 +49,7 @@ module.exports = function (getViewData, config) {
                                     }
                                     else {
                                         if (bcrypt.compareSync(post.password, result.rows[0].secret)) {
-                                            console.log("Login worked for", result.rows[0].username);
+                                            console.log("Sign in worked for", result.rows[0].username);
                                             req.session.userID = post.user;
                                             res.redirect("account");
                                         }
@@ -61,13 +61,13 @@ module.exports = function (getViewData, config) {
                             ],
                             function (err) {
                                 if (err || err === true) {
-                                    res.render("login", getViewData("Login", "login", req.session.userID, "Error: login failed"));
+                                    res.render("signin", getViewData("Sign in", "signin", req.session.userID, "Error: signin failed"));
                                 }
                             }
                         );
                     }
                     else {
-                        res.render("login", getViewData("Login", "login", req.session.userID, "Error: login failed, unexpected form data"));
+                        res.render("signin", getViewData("Sign in", "signin", req.session.userID, "Error: signin failed, unexpected form data"));
                     }
                 });
             }
