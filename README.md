@@ -1,7 +1,7 @@
 egress-bootstrap: start writing a web app already.
 ====
 
-egress is a minimal [Express](http://expressjs.com/) app template for a user account system.
+egress-bootstrap is a minimal [Express](http://expressjs.com/) app template for a user account system, built with Twitter's Bootstrap.
 I built this with the intention of getting user-based node.js apps scaffolded out quickly.
 
 <table>
