@@ -1,4 +1,4 @@
-egress: start writing a web app already.
+egress-bootstrap: start writing a web app already.
 ====
 
 egress is a minimal [Express](http://expressjs.com/) app template for a user account system.
