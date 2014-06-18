@@ -1,14 +1,6 @@
 body {
-    padding-top: 50px;
-}
-.egress-template {
-    padding: 40px 15px;
-}
-ul.nav.navbar-nav li a {
-    color: whitesmoke;
-}
-.navbar-inverse .navbar-brand {
-    color: whitesmoke;
+    padding-top: 20px;
+    width: 100%;
 }
 .centered-form {
     max-width: 400px;
