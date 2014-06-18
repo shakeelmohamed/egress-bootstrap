@@ -1,29 +1,26 @@
-.navbar.navbar-inverse.navbar-fixed-top
-    .container
-        .navbar-header
-            button(type="button", class="navbar-toggle", data-toggle="collapse", data-target=".navbar-collapse")
-                span.icon-bar
-                span.icon-bar
-                span.icon-bar
-            a(class="navbar-brand" href="./") #{siteName}
-        .collapse.navbar-collapse
-            ul.nav.navbar-nav.navbar-right
-                // For the actual navigation items, follow the format of {'url': 'visiblename' }
-                for navItem, path in {"": "Home"}
-                    if path === loc
-                        li.active
-                            a(href= "/" + path)= navItem
+mixin navigationItem(path, label)
+    li(class=path===loc ? "active" : "")
+        a(href="/"+path)= label
+
+.container
+    .navbar.navbar-inverse(role="navigation")
+        .container-fluid
+            .navbar-header
+                button(type="button", class="navbar-toggle", data-toggle="collapse", data-target=".navbar-collapse")
+                    span.sr-only Toggle navigation
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+                a(class="navbar-brand" href="./") #{siteName}
+            .collapse.navbar-collapse
+                ul.nav.navbar-nav.navbar-right
+                    // For the actual navigation items, follow the format of {'url': 'visiblename' }
+                    for label, path in {"": "Home"}
+                        +navigationItem(path, label)
+
+                    if user
+                        +navigationItem("account", "Hello, " + user)
+                        +navigationItem("signout", "Sign Out")
                     else
-                        li
-                            a(href= "/" + path)= navItem
-                
-                if user
-                    li
-                        a(href="/account") Hello, #{user}
-                    li
-                        a(href="/logout") Logout
-                else
-                    li
-                        a(href="/login") Login
-                    li
-                        a(href="/join") Join
+                        +navigationItem("signin", "Sign In")
+                        +navigationItem("join", "Join")

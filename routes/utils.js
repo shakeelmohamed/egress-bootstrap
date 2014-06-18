@@ -13,8 +13,8 @@ module.exports = function (app) {
         },
         checkAuth: function (req, res, next) {
             if (!req.session.userID) {
-                //Send user to the login page if they're not authorized
-                res.redirect("login");
+                //Send user to the sign in page if they're not authorized
+                res.redirect("signin");
             }
             else {
                 next();

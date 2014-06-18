@@ -10,9 +10,8 @@ html(lang="en")
                         if msg
                             .alert.alert-danger#error #{msg}
                         header.hidden-xs
-                            h1 Join #{siteName}
+                            h1 Sign in to #{siteName}
                             hr
-                        include forms/join
-                        br
+                        include forms/signin
         
         include includes/scripts

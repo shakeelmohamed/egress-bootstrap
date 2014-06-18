@@ -9,10 +9,10 @@ exports.init = function (app) {
 
     app.get("/404", controllers._404.get);
 
-    app.get("/logout", controllers.logout.get);
+    app.get("/signout", controllers.signout.get);
 
-    app.get("/login", controllers.login.get);
-    app.post("/login", controllers.login.post);
+    app.get("/signin", controllers.signin.get);
+    app.post("/signin", controllers.signin.post);
 
     app.get("/join", controllers.join.get);
     app.post("/join", controllers.join.post);
