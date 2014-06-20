@@ -15,7 +15,7 @@ before_script:
 deploy:
   provider: heroku
   api_key:
-    secure: KCuXYVBVFbHg0RaOi+cyHiIoRM2ofN5r8aHsXR5NS1k6ozGl0MB/3rTKOQS9GZQOJar1YNxjDI41S/M8RmWDwPTsTzBW/RQivTZhC4qJ3zxpwuLPkT+NqQUZY5pejfNsUNp44d5Rh1TTRQf36xWXFyvEKAZZX0xDSBUGiik/48g=
+    secure: AohSB4/UJqbmKcYVmpap8Ryp14HlhVAEvPSU41/TVzA26EE1xTVXEL9BnebX3ChUrdb8dnmIh2eFfcccgMCROjgm55JRZY2dh5Z1rQ4o4BKcWMyVNMJVkvfIaIYCXREb9gNdmjWm8O6jMlNAGjVzWtGLGGMdsdEtrp5F3gWoYHQ=
   app:
     master: egress-bootstrap
     develop: egress-bootstrap-dev
