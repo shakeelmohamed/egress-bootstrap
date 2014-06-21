@@ -42,7 +42,7 @@ module.exports = function (getViewData, config) {
                         //Insert query must be run asynch, to get the callback for errors like non-unique values, etc.
                         async.waterfall([
                                 function (callback) {
-                                    client.query("insert into users (userid, username, email, secret) values (DEFAULT, $1, $2, $3)", [post.user, post.email, bcrypt.hashSync(post.password)], callback);
+                                    client.query("insert into users (id, username, email, secret) values (DEFAULT, $1, $2, $3)", [post.user, post.email, bcrypt.hashSync(post.password)], callback);
                                 },
                                 function (result, callback) {
                                     if (!post.user || !post.email || !post.password) {
