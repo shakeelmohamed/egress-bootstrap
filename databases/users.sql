@@ -4,11 +4,11 @@
 
 CREATE TABLE users
 (
-  userid serial NOT NULL,
+  id serial NOT NULL,
   username text NOT NULL,
   email text NOT NULL,
   secret text NOT NULL,
-  CONSTRAINT "PRIMARY" PRIMARY KEY (userid),
+  CONSTRAINT "PRIMARY" PRIMARY KEY (id),
   CONSTRAINT email_unique UNIQUE (email),
   CONSTRAINT username_unique UNIQUE (username)
 )
