@@ -50,7 +50,7 @@ module.exports = function (getViewData, config) {
                                     else {
                                         if (bcrypt.compareSync(post.password, result.rows[0].secret)) {
                                             console.log("Sign in worked for", result.rows[0].username);
-                                            req.session.userID = post.user;
+                                            req.session.userID = result.rows[0].username;
                                             res.redirect("account");
                                         }
                                         else {
